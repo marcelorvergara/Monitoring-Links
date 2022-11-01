@@ -23,9 +23,9 @@ export interface ISession {
 }
 
 const Home: NextPage = () => {
-  const [userData, setUserData] = useState<ISession | undefined>();
+  const [userInfo, setUserInfo] = useState<ISession | undefined>();
   useEffect(() => {
-    fetch("http://localhost:3001/auth/login/success", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/login/success", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -39,11 +39,10 @@ const Home: NextPage = () => {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
-        console.log(responseJson);
-        setUserData(responseJson.user);
+        setUserInfo(responseJson.user);
       })
       .catch((error) => {
-        setUserData(undefined);
+        setUserInfo(undefined);
       });
   }, []);
 
@@ -53,7 +52,7 @@ const Home: NextPage = () => {
         <title>Monitoring Links</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header userInfo={userData} />
+      <Header userInfo={userInfo} />
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
         <h1 className="text-6xl font-bold">
           Welcome to{" "}
