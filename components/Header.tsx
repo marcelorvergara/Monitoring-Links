@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { ISession } from "../pages";
 
@@ -8,7 +9,6 @@ interface IUser {
 export default function Header(props: IUser) {
   const { userInfo } = props;
   const [isOpen, setIsOpen] = useState(false);
-  console.log(process.env.NEXT_PUBLIC_BACKEND_SRV);
   const toggleClasses =
     "w-full flex-grow lg:items-center lg:w-auto lg:block pt-6 lg:pt-0";
   function handleMenu() {
@@ -19,11 +19,11 @@ export default function Header(props: IUser) {
     <>
       <nav className="flex items-center justify-between flex-wrap bg-blue-400 p-6 fixed w-full z-10 top-0">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <a
+          <Link
             className="text-white no-underline hover:text-white hover:no-underline"
-            href="#">
+            href="/">
             <span className="text-2xl pl-2">Monitoring Links</span>
-          </a>
+          </Link>
         </div>
         <div className="block lg:hidden">
           <button

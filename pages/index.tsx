@@ -3,6 +3,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import MainDefault from "../components/MainDefault";
+import MainUserArea from "../components/MainUserArea";
 
 export interface Data {
   height: number;
@@ -20,6 +22,19 @@ export interface ISession {
   id: string;
   name: string;
   picture: Picture;
+}
+
+interface IIsLoggedInProps {
+  isLoggedIn: ISession | undefined;
+}
+
+function Main(props: IIsLoggedInProps) {
+  const { isLoggedIn } = props;
+  console.log(isLoggedIn);
+  if (isLoggedIn === undefined) {
+    return <MainDefault />;
+  }
+  return <MainUserArea userInfo={isLoggedIn} />;
 }
 
 const Home: NextPage = () => {
@@ -53,14 +68,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header userInfo={userInfo} />
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{" "}
-          <a className="text-blue-600" href="#">
-            Monitoring Links
-          </a>
-        </h1>
-      </main>
+      <Main isLoggedIn={userInfo} />
       <Footer />
     </div>
   );
