@@ -46,7 +46,9 @@ export default function MainUserArea(props: IMainUserAreaProps) {
           </a>
         </li>
       </ul>
-      {display === "newMonitor" && <LinkMonitorData />}
+      {display === "newMonitor" && (
+        <LinkMonitorData userInfo={props.userInfo} />
+      )}
       {display === "dashboard" && <Dashboard />}
     </main>
   );
