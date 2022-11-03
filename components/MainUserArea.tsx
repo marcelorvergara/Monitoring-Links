@@ -8,9 +8,10 @@ interface IMainUserAreaProps {
 }
 
 export default function MainUserArea(props: IMainUserAreaProps) {
-  const activeBtn = "border-blue-500  bg-blue-500 hover:bg-blue-700 text-white";
+  const activeBtn =
+    "border-blue-300  bg-blue-300 hover:bg-blue-500 text-white shadow-md";
   const notActiveBtn =
-    " border-white  hover:border-gray-200 text-blue-500 hover:bg-gray-200 ";
+    "border-white  hover:border-gray-200 text-blue-500 hover:bg-gray-200 hover:shadow-md";
   const [display, setDisplay] = useState<"dashboard" | "newMonitor">(
     "dashboard"
   );
@@ -26,8 +27,8 @@ export default function MainUserArea(props: IMainUserAreaProps) {
             onClick={() => toggleDisplay("dashboard")}
             className={
               display === "dashboard"
-                ? `inline-block border rounded py-2 px-4 ${activeBtn}`
-                : `inline-block border rounded py-2 px-4 ${notActiveBtn}`
+                ? `inline-block border rounded py-1 px-2.5 ${activeBtn}`
+                : `inline-block border rounded py-1 px-2.5 ${notActiveBtn}`
             }
             href="#">
             Dashboard
@@ -38,8 +39,8 @@ export default function MainUserArea(props: IMainUserAreaProps) {
             onClick={() => toggleDisplay("newMonitor")}
             className={
               display === "newMonitor"
-                ? `inline-block border rounded py-2 px-4 ${activeBtn}`
-                : `inline-block border rounded py-2 px-4 ${notActiveBtn}`
+                ? `inline-block border rounded py-1 px-2.5 ${activeBtn}`
+                : `inline-block border rounded py-1 px-2.5 ${notActiveBtn}`
             }
             href="#">
             New Monitor

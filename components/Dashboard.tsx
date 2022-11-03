@@ -54,7 +54,9 @@ export default function Dashboard(props: IDashboardProps) {
             <tbody>
               {urlStatus.map((item: IURLsStatus) => (
                 <tr>
-                  <td className="p-2">{item.url}</td>
+                  <td className="p-2">
+                    {item.url.replace("https://", "").replace("http://", "")}
+                  </td>
                   <td className="p-2">{item.status}</td>
                   <td className="p-2">{item.load_time}</td>
                 </tr>
