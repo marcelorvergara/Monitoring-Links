@@ -83,7 +83,7 @@ const Home: NextPage = () => {
       case "Logout":
         return <Logout />;
       default:
-        return "";
+        return <MainDefault />;
     }
   }
   return (
