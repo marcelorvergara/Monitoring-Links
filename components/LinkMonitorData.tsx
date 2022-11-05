@@ -35,7 +35,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   }
 
   return (
-    <form className="w-full max-w-lg text-left">
+    <form className="w-full max-w-lg text-left mt-2">
       <div className="flex flex-wrap">
         <div className="w-full md:px-8 m-4">
           <label

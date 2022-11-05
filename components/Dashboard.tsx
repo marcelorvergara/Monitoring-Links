@@ -17,6 +17,7 @@ interface IDashboardProps {
 
 export default function Dashboard(props: IDashboardProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + `/urls/${props.userInfo.id}`, {
       method: "GET",
@@ -28,6 +29,7 @@ export default function Dashboard(props: IDashboardProps) {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         if (response.status === 200) return response.json();
         throw new Error("failed to authenticate user");
       })
@@ -55,7 +57,11 @@ export default function Dashboard(props: IDashboardProps) {
             </tr>
           </thead>
           <tbody>
-            {!urlStatus.length ? (
+            {isLoading ? (
+              <div className="flex w-full items-center justify-center m-8">
+                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
+              </div>
+            ) : !urlStatus.length ? (
               <div className="p-6 text-2xl">
                 Go to{" "}
                 <img src="/static/images/newmonitor.svg" alt="New monitor" /> to
