@@ -96,11 +96,11 @@ const Home: NextPage = () => {
           onClick={() => setOpen(!open)}
           src="/static/images/menu_open.svg"
           alt="menu button"
-          className={`absolute cursor-pointer rounded-md -right-3 top-14 w-7 border-2 border-blue-900 ${
+          className={`absolute cursor-pointer rounded-md -right-3 top-20 w-7 border-2 border-blue-900 ${
             !open && "rotate-180"
           }`}
         />
-        <div className="flex gap-x-4 items-center">
+        <div className="flex flex-col gap-x-4 items-start">
           <img
             onClick={() => setComponent("Home")}
             src="/static/images/logo.svg"
@@ -110,13 +110,13 @@ const Home: NextPage = () => {
             }`}
           />
           <h1
-            className={`origin-left font-medium text-sm duration-300 ${
+            className={`origin-left font-medium text-sm duration-300 -mr-20 ${
               !open && "scale-0"
             }`}>
             Monitoring Links
           </h1>
         </div>
-        <ul className="pt-6">
+        <ul className="pt-10">
           <li
             className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1 hover:bg-white rounded-md`}>
             {!!userInfo ? (
@@ -145,7 +145,9 @@ const Home: NextPage = () => {
                   alt="Login"
                 />
                 <span
-                  className={`${!open && "hidden"} origin-left duration-200`}>
+                  className={`${
+                    !open && "hidden"
+                  } origin-left duration-200 text-left`}>
                   Login
                 </span>
               </Link>
@@ -163,7 +165,9 @@ const Home: NextPage = () => {
                 className="flex gap-x-2 items-center">
                 <img className="w-8 h-8" src={menu.src} alt={menu.title} />
                 <span
-                  className={`${!open && "hidden"} origin-left duration-200`}>
+                  className={`${
+                    !open && "hidden"
+                  } origin-left duration-200 text-left`}>
                   {menu.title}
                 </span>
               </button>
