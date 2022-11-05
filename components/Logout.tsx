@@ -25,5 +25,5 @@ export default function Logout() {
       });
   }, []);
 
-  return <div>Good bye!</div>;
+  return <div className="mx-8 my-10">Good bye!</div>;
 }

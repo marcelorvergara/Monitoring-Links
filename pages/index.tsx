@@ -153,26 +153,27 @@ const Home: NextPage = () => {
               </Link>
             )}
           </li>
-          {menus.map((menu, idx) => (
-            <li
-              key={idx}
-              className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1 hover:bg-white rounded-md ${
-                menu.gap ? "mt-8" : "mt-1"
-              }`}>
-              <button
-                onClick={() => setComponent(menu.title)}
-                role="div"
-                className="flex gap-x-2 items-center">
-                <img className="w-8 h-8" src={menu.src} alt={menu.title} />
-                <span
-                  className={`${
-                    !open && "hidden"
-                  } origin-left duration-200 text-left`}>
-                  {menu.title}
-                </span>
-              </button>
-            </li>
-          ))}
+          {userInfo &&
+            menus.map((menu, idx) => (
+              <li
+                key={idx}
+                className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
+                  menu.gap ? "mt-8" : "mt-1"
+                } ${component === menu.title ? "bg-slate-200" : ""}`}>
+                <button
+                  onClick={() => setComponent(menu.title)}
+                  role="div"
+                  className="flex gap-x-2 items-center">
+                  <img className="w-8 h-8" src={menu.src} alt={menu.title} />
+                  <span
+                    className={`${
+                      !open && "hidden"
+                    } origin-left duration-200 text-left`}>
+                    {menu.title}
+                  </span>
+                </button>
+              </li>
+            ))}
         </ul>
       </div>
       <div className="pt-6 text-2xl font-semibold flex-1 h-screen">
