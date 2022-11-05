@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Dashboard from "../components/Dashboard";
 import LinkMonitorData from "../components/LinkMonitorData";
+import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
 
 export interface Data {
@@ -73,10 +74,14 @@ const Home: NextPage = () => {
   const [component, setComponent] = useState<string>();
   function switchComonent() {
     switch (component) {
+      case "Home":
+        return <MainDefault />;
       case "Dashboard":
         return <Dashboard userInfo={userInfo!} />;
       case "New Monitor":
         return <LinkMonitorData userInfo={userInfo!} />;
+      case "Logout":
+        return <Logout />;
       default:
         return "";
     }
@@ -97,6 +102,7 @@ const Home: NextPage = () => {
         />
         <div className="flex gap-x-4 items-center">
           <img
+            onClick={() => setComponent("Home")}
             src="/static/images/logo.svg"
             alt="logo"
             className={`cursor-pointer duration-500 ${

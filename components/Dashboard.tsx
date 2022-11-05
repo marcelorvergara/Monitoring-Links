@@ -32,7 +32,6 @@ export default function Dashboard(props: IDashboardProps) {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
-        console.log(responseJson);
         setUrlStatus(responseJson);
       })
       .catch((error) => {
@@ -56,22 +55,30 @@ export default function Dashboard(props: IDashboardProps) {
             </tr>
           </thead>
           <tbody>
-            {urlStatus.map((item: IURLsStatus) => (
-              <tr key={item.urlstatus_id} className="border-2 rounded-lg">
-                <td>
-                  {item.url.replace("https://", "").replace("http://", "")}
-                  <div>
-                    <span>{parseDate(item.created_at)}</span>
-                    <br />
-                    <span>Status code: {item.status}</span>
-                    <br />
-                  </div>
-                </td>
-                <td className="align-top text-right">
-                  <span>{item.load_time}</span>
-                </td>
-              </tr>
-            ))}
+            {!urlStatus.length ? (
+              <div className="p-6 text-2xl">
+                Go to{" "}
+                <img src="/static/images/newmonitor.svg" alt="New monitor" /> to
+                register your first Monitoring Link!
+              </div>
+            ) : (
+              urlStatus.map((item: IURLsStatus) => (
+                <tr key={item.urlstatus_id} className="border-2 rounded-lg">
+                  <td>
+                    {item.url.replace("https://", "").replace("http://", "")}
+                    <div>
+                      <span>{parseDate(item.created_at)}</span>
+                      <br />
+                      <span>Status code: {item.status}</span>
+                      <br />
+                    </div>
+                  </td>
+                  <td className="align-top text-right">
+                    <span>{item.load_time}</span>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
