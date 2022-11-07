@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
+import { getUrls } from "../helpers/helpers";
+import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
-
-interface IURLsStatus {
-  urlstatus_id: number;
-  url: string;
-  user_id: string;
-  url_id: number;
-  status: string;
-  load_time: string;
-  created_at: string;
-}
 
 interface IDashboardProps {
   userInfo: ISession;
@@ -19,15 +11,7 @@ export default function Dashboard(props: IDashboardProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + `/urls/${props.userInfo.id}`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "applictacion/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": "true",
-      },
-    })
+    getUrls(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();
@@ -52,13 +36,13 @@ export default function Dashboard(props: IDashboardProps) {
         <table className="table w-full">
           <thead>
             <tr className="flex-1">
-              <th>Last Results</th>
+              <th className="align-top">Last Results</th>
               <th className="text-end">Loading time</th>
             </tr>
           </thead>
           <tbody>
             {isLoading ? (
-              <div className="flex w-full items-center justify-center m-8">
+              <div className="flex w-full items-center justify-center m-8 mt-14 mr-24">
                 <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
               </div>
             ) : !urlStatus.length ? (

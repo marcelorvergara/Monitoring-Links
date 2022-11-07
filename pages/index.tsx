@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
+import { Main } from "next/document";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Dashboard from "../components/Dashboard";
 import LinkMonitorData from "../components/LinkMonitorData";
 import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
+import Manage from "../components/Manage";
 
 export interface Data {
   height: number;
@@ -64,6 +66,12 @@ const Home: NextPage = () => {
       gap: false,
     },
     {
+      title: "Manage",
+      src: "/static/images/manage.svg",
+      path: "/",
+      gap: false,
+    },
+    {
       title: "Logout",
       src: "/static/images/logout.svg",
       path: process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/facebook/logout",
@@ -80,6 +88,8 @@ const Home: NextPage = () => {
         return <Dashboard userInfo={userInfo!} />;
       case "New Monitor":
         return <LinkMonitorData userInfo={userInfo!} />;
+      case "Manage":
+        return <Manage userInfo={userInfo!} />;
       case "Logout":
         return <Logout />;
       default:
@@ -118,7 +128,7 @@ const Home: NextPage = () => {
         </div>
         <ul className="pt-10">
           <li
-            className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1 hover:bg-white rounded-md`}>
+            className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-white rounded-md`}>
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1">
                 <img
@@ -177,7 +187,6 @@ const Home: NextPage = () => {
         </ul>
       </div>
       <div className="pt-6 text-2xl font-semibold flex-1 h-screen">
-        {!userInfo && <MainDefault />}
         {switchComonent()}
       </div>
     </div>
