@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUrlStatus } from "../helpers/helpers";
+import { getUrlStatus, parseDate } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
@@ -24,11 +24,6 @@ export default function Dashboard(props: IDashboardProps) {
         setUrlStatus([]);
       });
   }, []);
-
-  function parseDate(date: string) {
-    const newDate = new Date(date);
-    return `${newDate.toLocaleTimeString()} - ${newDate.toLocaleDateString()}`;
-  }
 
   return (
     <main className="text-left text-xs">
@@ -64,7 +59,7 @@ export default function Dashboard(props: IDashboardProps) {
               </tr>
             ) : (
               urlStatus.map((item: IURLsStatus) => (
-                <tr key={item.urlstatus_id} className="border-2 rounded-lg">
+                <tr key={item.urlstatus_id} className="border-2">
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
                     <div>
