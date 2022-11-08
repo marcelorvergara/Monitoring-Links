@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUrls } from "../helpers/helpers";
+import { getUserUrls } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
@@ -11,7 +11,7 @@ export default function Manage(props: IManageProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
-    getUrls(props.userInfo.id)
+    getUserUrls(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();

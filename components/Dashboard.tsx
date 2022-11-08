@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUrls } from "../helpers/helpers";
+import { getUrlStatus } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
@@ -11,7 +11,7 @@ export default function Dashboard(props: IDashboardProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
-    getUrls(props.userInfo.id)
+    getUrlStatus(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();
@@ -42,15 +42,26 @@ export default function Dashboard(props: IDashboardProps) {
           </thead>
           <tbody>
             {isLoading ? (
-              <div className="flex w-full items-center justify-center m-8 mt-14 mr-24">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
-              </div>
+              <tr>
+                <td>
+                  <div className="flex w-full items-center justify-center m-8 mt-14 mr-24">
+                    <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
+                  </div>
+                </td>
+              </tr>
             ) : !urlStatus.length ? (
-              <div className="p-6 text-2xl">
-                Go to{" "}
-                <img src="/static/images/newmonitor.svg" alt="New monitor" /> to
-                register your first Monitoring Link!
-              </div>
+              <tr>
+                <td>
+                  <div className="p-6 text-2xl">
+                    Go to{" "}
+                    <img
+                      src="/static/images/newmonitor.svg"
+                      alt="New monitor"
+                    />{" "}
+                    to register your first Monitoring Link!
+                  </div>
+                </td>
+              </tr>
             ) : (
               urlStatus.map((item: IURLsStatus) => (
                 <tr key={item.urlstatus_id} className="border-2 rounded-lg">
