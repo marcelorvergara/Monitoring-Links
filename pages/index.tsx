@@ -53,7 +53,7 @@ const Home: NextPage = () => {
   const [open, setOpen] = useState(true);
   const menus = [
     {
-      title: "LatestResults",
+      title: "Latest Results",
       src: "/static/images/latestresults.svg",
       path: "/",
       gap: false,
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
     switch (component) {
       case "Home":
         return <MainDefault />;
-      case "LatestResults":
+      case "Latest Results":
         return <LatestResults userInfo={userInfo!} />;
       case "New Monitor":
         return <LinkMonitorData userInfo={userInfo!} />;
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
             !open && "rotate-180"
           }`}
         />
-        <div className="flex flex-col gap-x-4 items-start">
+        <div className="flex flex-col gap-x-3 items-start">
           <img
             onClick={() => setComponent("Home")}
             src="/static/images/logo.svg"
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
             }`}
           />
           <h1
-            className={`text-white origin-left font-medium text-sm duration-300 -mr-20 ${
+            className={`text-white origin-left font-medium text-xs duration-300 -mr-20 ${
               !open && "scale-0"
             }`}>
             Monitoring Links

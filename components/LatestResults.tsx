@@ -32,12 +32,10 @@ export default function LatestResults(props: ILatestResultsProps) {
         <table className="table w-full">
           <thead>
             <tr className="flex-1 text-lg">
-              <th className={`${!urlStatus.length && "hidden"} align-top`}>
-                Last Results
+              <th className="align-top">
+                Lastest <br /> Checks
               </th>
-              <th className={`${!urlStatus.length && "hidden"} text-end`}>
-                Loading time
-              </th>
+              <th className="text-end">Loading Time</th>
             </tr>
           </thead>
           <tbody>
