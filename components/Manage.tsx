@@ -65,14 +65,14 @@ export default function Manage(props: IManageProps) {
             ) : (
               urlStatus.map((item: IURLsStatus) => (
                 <tr key={item.urlstatus_id}>
-                  <td className="border-2 py-6 px-1.5 text-right">
+                  <td className="border-2 py-2 px-1.5 text-right">
                     <span>
                       {item.url.replace("https://", "").replace("http://", "")}
                     </span>
                     <br />
                     <button
                       onClick={() => deleteUrl(item.url_id)}
-                      className="text-xs bg-red-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
+                      className="mt-4 text-xs bg-red-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
                       Delete
                     </button>
                   </td>

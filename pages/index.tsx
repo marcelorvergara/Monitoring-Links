@@ -169,7 +169,7 @@ const Home: NextPage = () => {
                 key={idx}
                 className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
                   menu.gap ? "mt-8" : "mt-1"
-                } ${component === menu.title ? "bg-slate-200" : ""}`}>
+                } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
                   role="div"
