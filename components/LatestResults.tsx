@@ -40,7 +40,7 @@ export default function Dashboard(props: IDashboardProps) {
               <tr>
                 <td>
                   <div className="flex w-full items-center justify-center m-8 mt-14 mr-10">
-                    <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
+                    <div className="w-16 h-16 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
                   </div>
                 </td>
               </tr>

@@ -63,8 +63,8 @@ export default function Manage(props: IManageProps) {
                 </td>
               </tr>
             ) : (
-              urlStatus.map((item: IURLsStatus) => (
-                <tr key={item.urlstatus_id}>
+              urlStatus.map((item: IURLsStatus, i: number) => (
+                <tr key={i}>
                   <td className="border-2 py-2 px-1.5 text-right">
                     <span>
                       {item.url.replace("https://", "").replace("http://", "")}

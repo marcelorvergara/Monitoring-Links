@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
-import { Main } from "next/document";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Dashboard from "../components/Dashboard";
+import LatestResults from "../components/LatestResults";
 import LinkMonitorData from "../components/LinkMonitorData";
 import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
@@ -54,8 +53,8 @@ const Home: NextPage = () => {
   const [open, setOpen] = useState(true);
   const menus = [
     {
-      title: "Dashboard",
-      src: "/static/images/dashboard.svg",
+      title: "LatestResults",
+      src: "/static/images/latestresults.svg",
       path: "/",
       gap: false,
     },
@@ -84,8 +83,8 @@ const Home: NextPage = () => {
     switch (component) {
       case "Home":
         return <MainDefault />;
-      case "Dashboard":
-        return <Dashboard userInfo={userInfo!} />;
+      case "LatestResults":
+        return <LatestResults userInfo={userInfo!} />;
       case "New Monitor":
         return <LinkMonitorData userInfo={userInfo!} />;
       case "Manage":
@@ -186,7 +185,7 @@ const Home: NextPage = () => {
             ))}
         </ul>
       </div>
-      <div className="pt-6 text-2xl font-semibold flex-1 h-screen">
+      <div className="pt-6 text-2xl font-semibold flex-1 h-screen bg-slate-200">
         {switchComonent()}
       </div>
     </div>
