@@ -19,7 +19,6 @@ export default function Manage(props: IManageProps) {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
-        console.log(responseJson);
         setUrlStatus(responseJson);
       })
       .catch((error) => {
@@ -36,7 +35,7 @@ export default function Manage(props: IManageProps) {
       <div className="w-full md:w-11/12 md:px-8 px-6">
         <table className="table w-full">
           <thead>
-            <tr className="flex-1">
+            <tr className="flex-1  text-lg">
               <th className="align-top">Manage URL</th>
             </tr>
           </thead>
@@ -44,8 +43,8 @@ export default function Manage(props: IManageProps) {
             {isLoading ? (
               <tr>
                 <td>
-                  <div className="flex w-full items-center justify-center m-8 mt-14 mr-24">
-                    <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-blue-700"></div>
+                  <div className="flex w-full items-center justify-center">
+                    <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
                   </div>
                 </td>
               </tr>

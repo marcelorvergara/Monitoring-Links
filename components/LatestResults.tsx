@@ -41,9 +41,9 @@ export default function LatestResults(props: ILatestResultsProps) {
           <tbody>
             {isLoading ? (
               <tr>
-                <td>
-                  <div className="flex w-full items-center justify-center m-8 mt-14 mr-10">
-                    <div className="w-16 h-16 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
+                <td colSpan={2}>
+                  <div className="flex w-full items-center justify-center">
+                    <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
                   </div>
                 </td>
               </tr>
