@@ -53,14 +53,14 @@ const Home: NextPage = () => {
   const [open, setOpen] = useState(true);
   const menus = [
     {
-      title: "Latest Results",
-      src: "/static/images/latestresults.svg",
+      title: "New Monitor",
+      src: "/static/images/newmonitor.svg",
       path: "/",
       gap: false,
     },
     {
-      title: "New Monitor",
-      src: "/static/images/newmonitor.svg",
+      title: "Latest Results",
+      src: "/static/images/latestresults.svg",
       path: "/",
       gap: false,
     },

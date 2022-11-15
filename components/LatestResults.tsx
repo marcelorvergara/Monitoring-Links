@@ -73,7 +73,7 @@ export default function LatestResults(props: ILatestResultsProps) {
                     </div>
                   </td>
                   <td className="align-top text-right">
-                    <span>{item.load_time}</span>
+                    <span>{item.load_time}s.</span>
                   </td>
                 </tr>
               ))
