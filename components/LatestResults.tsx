@@ -3,11 +3,11 @@ import { getUrlStatus, parseDate } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
-interface IDashboardProps {
+interface ILatestResultsProps {
   userInfo: ISession;
 }
 
-export default function Dashboard(props: IDashboardProps) {
+export default function LatestResults(props: ILatestResultsProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -18,7 +18,8 @@ export default function Dashboard(props: IDashboardProps) {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
-        setUrlStatus(responseJson);
+        // limiting the latest results
+        setUrlStatus(responseJson.splice(0, 11));
       })
       .catch((error) => {
         setUrlStatus([]);
@@ -30,9 +31,13 @@ export default function Dashboard(props: IDashboardProps) {
       <div className="w-full md:w-11/12 md:px-8 px-6">
         <table className="table w-full">
           <thead>
-            <tr className="flex-1">
-              <th className="align-top">Last Results</th>
-              <th className="text-end">Loading time</th>
+            <tr className="flex-1 text-lg">
+              <th className={`${!urlStatus.length && "hidden"} align-top`}>
+                Last Results
+              </th>
+              <th className={`${!urlStatus.length && "hidden"} text-end`}>
+                Loading time
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -58,8 +63,8 @@ export default function Dashboard(props: IDashboardProps) {
                 </td>
               </tr>
             ) : (
-              urlStatus.map((item: IURLsStatus) => (
-                <tr key={item.urlstatus_id} className="border-2">
+              urlStatus.map((item: IURLsStatus, i: number) => (
+                <tr key={i} className="border-2">
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
                     <div>
