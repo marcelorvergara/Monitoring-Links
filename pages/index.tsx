@@ -115,12 +115,12 @@ const Home: NextPage = () => {
             onClick={() => setComponent("Home")}
             src="/static/images/logo.svg"
             alt="logo"
-            className={`cursor-pointer duration-500 ${
+            className={`cursor-pointer duration-500 w-12 h-12 ${
               open && "rotate-[360deg]"
             }`}
           />
           <h1
-            className={`origin-left font-medium text-sm duration-300 -mr-20 ${
+            className={`text-white origin-left font-medium text-sm duration-300 -mr-20 ${
               !open && "scale-0"
             }`}>
             Monitoring Links
@@ -128,7 +128,7 @@ const Home: NextPage = () => {
         </div>
         <ul className="pt-10">
           <li
-            className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-white rounded-md`}>
+            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-white rounded-md`}>
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1">
                 <img
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
             menus.map((menu, idx) => (
               <li
                 key={idx}
-                className={`text-gray-900 text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
+                className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
                   menu.gap ? "mt-8" : "mt-1"
                 } ${component === menu.title ? "bg-slate-200" : ""}`}>
                 <button
