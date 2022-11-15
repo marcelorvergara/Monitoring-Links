@@ -35,7 +35,9 @@ export default function LatestResults(props: ILatestResultsProps) {
               <th className="align-top">
                 Lastest <br /> Checks
               </th>
-              <th className="text-end">Loading Time</th>
+              <th className="text-end">
+                Loading <br /> Time
+              </th>
             </tr>
           </thead>
           <tbody>
