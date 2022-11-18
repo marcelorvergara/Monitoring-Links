@@ -127,11 +127,11 @@ const Home: NextPage = () => {
         </div>
         <ul className="pt-10">
           <li
-            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-white rounded-md`}>
+            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-md`}>
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1">
                 <img
-                  className="w-8 h-8"
+                  className="w-8 h-8 rounded"
                   src={`${
                     !!userInfo
                       ? userInfo.picture.data.url
