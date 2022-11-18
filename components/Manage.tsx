@@ -71,7 +71,7 @@ export default function Manage(props: IManageProps) {
                     <br />
                     <button
                       onClick={() => deleteUrl(item.url_id)}
-                      className="mt-2 text-xs bg-red-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
+                      className="mt-2 text-xs bg-red-300 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
                       Delete
                     </button>
                   </td>
