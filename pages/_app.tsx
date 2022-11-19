@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Monitoring Links - Best Way to Monitor your Website Link</title>
         <meta
           name="description"
-          content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+          content="Check out this! Here you can monitor your website with just a few clicks. Try it now and you even can compare with other sites."
         />
       </Head>
       <Component {...pageProps} />
