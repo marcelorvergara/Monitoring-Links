@@ -171,7 +171,6 @@ const Home: NextPage = () => {
                 } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
-                  role="div"
                   className="flex gap-x-2 items-center">
                   <img className="w-8 h-8" src={menu.src} alt={menu.title} />
                   <span
