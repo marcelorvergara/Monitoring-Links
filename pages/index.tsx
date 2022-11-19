@@ -50,7 +50,7 @@ const Home: NextPage = () => {
   }, []);
 
   // menu
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const menus = [
     {
       title: "New Monitor",
@@ -151,13 +151,13 @@ const Home: NextPage = () => {
                 <img
                   className="w-8 h-8"
                   src="/static/images/login.svg"
-                  alt="Login"
+                  alt="Face Book Login"
                 />
                 <span
                   className={`${
                     !open && "hidden"
                   } origin-left duration-200 text-left`}>
-                  Login
+                  FB Login
                 </span>
               </Link>
             )}

@@ -20,6 +20,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
     try {
       const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/urls", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
