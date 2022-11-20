@@ -1,9 +1,11 @@
 export async function setUrlMonitor(url: string, id: string) {
-  return fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/urls", {
+  return fetch(`${process.env.NEXT_PUBLIC_BACKEND_SRV}/urls`, {
     method: "POST",
     credentials: "include",
     headers: {
+      Accept: "applictacion/json",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": "true",
     },
     body: JSON.stringify({ url, user_id: id }),
   });
