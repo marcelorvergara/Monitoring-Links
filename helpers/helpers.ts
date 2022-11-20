@@ -1,3 +1,14 @@
+export async function setUrlMonitor(url: string, id: string) {
+  return fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/urls", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ url, user_id: id }),
+  });
+}
+
 export async function getUrlStatus(id: string): Promise<any> {
   return fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + `/urlStatus/${id}`, {
     method: "GET",

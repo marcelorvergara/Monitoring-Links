@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { setUrlMonitor } from "../helpers/helpers";
 import { ISession } from "../pages";
 
 interface ILinkMonitorDataProps {
@@ -12,22 +13,14 @@ interface IFeedback {
 export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [url, setUrl] = useState<string>("");
   const [feedback, setFeedback] = useState<IFeedback>({});
+
   function handleUrlValue(event: React.FormEvent<HTMLInputElement>) {
     setUrl(event.currentTarget.value);
   }
 
   async function registerUrl() {
     try {
-      console.log("teste");
-      const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/urls", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url, user_id: props.userInfo.id }),
-      });
-      console.log(resp.status);
+      const resp = await setUrlMonitor(url, props.userInfo.id);
       if (resp.status === 201) {
         const respJson = await resp.json();
         setFeedback(respJson);
