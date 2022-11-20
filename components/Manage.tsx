@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { deleteUrlHelper, getUserUrls, parseDate } from "../helpers/helpers";
+import { IFeedback } from "../interfaces/IFeedback";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
@@ -10,13 +11,15 @@ interface IManageProps {
 export default function Manage(props: IManageProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [feedback, setFeedback] = useState<IFeedback>({});
 
   useEffect(() => {
     getUserUrls(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
+        console.log(response);
         if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
+        throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
         setUrlStatus(responseJson);
@@ -24,10 +27,22 @@ export default function Manage(props: IManageProps) {
       .catch((error) => {
         setUrlStatus([]);
       });
-  }, []);
+  }, [feedback]);
 
-  function deleteUrl(id: number) {
-    deleteUrlHelper(id);
+  async function deleteUrl(id: number) {
+    deleteUrlHelper(id)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) return response.json();
+        throw new Error("Failed to delete URL");
+      })
+      .then((responseJson) => {
+        console.log(responseJson);
+        setFeedback(responseJson);
+      })
+      .catch((error) => {
+        setFeedback(error);
+      });
   }
 
   return (
@@ -81,6 +96,25 @@ export default function Manage(props: IManageProps) {
           </tbody>
         </table>
       </div>
+      {feedback.error ? (
+        <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
+          <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+            Registration not completed
+          </div>
+          <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <p>{feedback.error}</p>
+          </div>
+        </div>
+      ) : !!feedback.url ? (
+        <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
+          <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
+            Success
+          </div>
+          <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+            <p>{feedback.url} removed. </p>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

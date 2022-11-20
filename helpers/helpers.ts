@@ -40,7 +40,7 @@ export function parseDate(date: string) {
   return `${newDate.toLocaleTimeString()} - ${newDate.toLocaleDateString()}`;
 }
 
-export async function deleteUrlHelper(id: number) {
+export async function deleteUrlHelper(id: number): Promise<any> {
   return fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + `/urls/${id}`, {
     method: "DELETE",
     credentials: "include",
