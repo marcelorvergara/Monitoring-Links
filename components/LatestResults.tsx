@@ -64,7 +64,7 @@ export default function LatestResults(props: ILatestResultsProps) {
               </tr>
             ) : (
               urlStatus.map((item: IURLsStatus, i: number) => (
-                <tr key={i} className="border-2">
+                <tr key={i} className="border-2 border-gray-400 p-4">
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
                     <div>
