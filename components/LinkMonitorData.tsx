@@ -18,7 +18,8 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
     setUrl(event.currentTarget.value);
   }
 
-  async function registerUrl() {
+  async function registerUrl(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault(); // fetch get cancelled when this is not present
     try {
       const resp = await setUrlMonitor(url, props.userInfo.id);
       if (resp.status === 201) {
