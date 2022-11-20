@@ -18,6 +18,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   async function registerUrl() {
     try {
+      console.log("teste");
       const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/urls", {
         method: "POST",
         credentials: "include",
@@ -26,7 +27,8 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
         },
         body: JSON.stringify({ url, user_id: props.userInfo.id }),
       });
-      if (resp.status === 200) {
+      console.log(resp.status);
+      if (resp.status === 201) {
         const respJson = await resp.json();
         setFeedback(respJson);
       }

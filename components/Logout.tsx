@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export default function Logout() {
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/facebook/logout", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/logout", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -14,11 +14,10 @@ export default function Logout() {
     })
       .then((response) => {
         if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
+        throw new Error("Failed to authenticate user");
       })
       .then((responseJson) => {
         window.open("/", "_self");
-        console.log(responseJson);
       })
       .catch((error) => {
         console.log(error);

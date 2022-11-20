@@ -44,10 +44,10 @@ const Home: NextPage = () => {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
-        console.log(responseJson.user);
         setUserInfo(responseJson.user);
       })
       .catch((error) => {
+        console.error(error);
         setUserInfo(undefined);
       });
   }, []);
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
     {
       title: "Logout",
       src: "/static/images/logout.svg",
-      path: process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/facebook/logout",
+      path: process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/logout",
       gap: true,
     },
   ];
