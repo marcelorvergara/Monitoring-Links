@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import LatestResults from "../components/LatestResults";
 import LinkMonitorData from "../components/LinkMonitorData";
+import Login from "../components/Login";
 import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
 import Manage from "../components/Manage";
@@ -19,10 +19,12 @@ export interface Picture {
 }
 
 export interface ISession {
+  displayName: string;
   _id: string;
   id: string;
   name: string;
-  picture: Picture;
+  picture?: Picture; // facebook
+  photos?: any; // google
 }
 
 const Home: NextPage = () => {
@@ -42,6 +44,7 @@ const Home: NextPage = () => {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
+        console.log(responseJson.user);
         setUserInfo(responseJson.user);
       })
       .catch((error) => {
@@ -83,6 +86,8 @@ const Home: NextPage = () => {
     switch (component) {
       case "Home":
         return <MainDefault />;
+      case "Login":
+        return <Login />;
       case "Latest Results":
         return <LatestResults userInfo={userInfo!} />;
       case "New Monitor":
@@ -134,20 +139,22 @@ const Home: NextPage = () => {
                   className="w-8 h-8 rounded"
                   src={`${
                     !!userInfo
-                      ? userInfo.picture.data.url
+                      ? !!userInfo.picture
+                        ? userInfo.picture.data.url
+                        : userInfo.photos[0].value
                       : "/static/images/login.svg"
                   }`}
                   alt="User Info"
                 />
                 <span
                   className={`${!open && "hidden"} origin-left duration-200`}>
-                  {userInfo.name}
+                  {userInfo.displayName}
                 </span>
               </div>
             ) : (
-              <Link
+              <button
                 className="flex items-center gap-x-2 cursor-pointer pr-1"
-                href={process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/facebook"}>
+                onClick={() => setComponent("Login")}>
                 <img
                   className="w-8 h-8"
                   src="/static/images/login.svg"
@@ -157,9 +164,9 @@ const Home: NextPage = () => {
                   className={`${
                     !open && "hidden"
                   } origin-left duration-200 text-left`}>
-                  FB Login
+                  Login
                 </span>
-              </Link>
+              </button>
             )}
           </li>
           {userInfo &&
