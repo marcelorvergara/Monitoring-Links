@@ -27,12 +27,12 @@ export default function LatestResults(props: ILatestResultsProps) {
   }, []);
 
   return (
-    <main className="text-left text-xs">
-      <div className="w-full md:w-11/12 md:px-8 px-6">
+    <main className="flex justify-center mt-2 text-xs">
+      <div className="w-full sm:w-6/12 md:px-8 px-6">
         <table className="table w-full">
           <thead>
             <tr className="flex-1 text-lg">
-              <th className="align-top">
+              <th className="align-top  text-left">
                 Lastest <br /> Checks
               </th>
               <th className="text-end">

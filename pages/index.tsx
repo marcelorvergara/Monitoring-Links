@@ -110,7 +110,7 @@ const Home: NextPage = () => {
           onClick={() => setOpen(!open)}
           src="/static/images/menu_open.svg"
           alt="menu button"
-          className={`bg-slate-300 absolute cursor-pointer rounded-md -right-3 top-20 w-7 border-2 border-slate-600 ${
+          className={`bg-slate-300 absolute cursor-pointer rounded -right-3 top-20 w-7 border-2 border-slate-600 ${
             !open && "rotate-180"
           }`}
         />
