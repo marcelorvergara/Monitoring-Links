@@ -52,6 +52,30 @@ const Home: NextPage = () => {
       });
   }, []);
 
+  function logoutUser(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/logout", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "applictacion/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        throw new Error("Failed to authenticate user");
+      })
+      .then((responseJson) => {
+        window.open("/", "_self");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   // menu
   const [open, setOpen] = useState(false);
   const menus = [
@@ -72,12 +96,6 @@ const Home: NextPage = () => {
       src: "/static/images/manage.svg",
       path: "/",
       gap: false,
-    },
-    {
-      title: "Logout",
-      src: "/static/images/logout.svg",
-      path: process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/logout",
-      gap: true,
     },
   ];
 
@@ -114,6 +132,7 @@ const Home: NextPage = () => {
             !open && "rotate-180"
           }`}
         />
+        {/* home */}
         <div className="flex flex-col gap-x-3 items-start">
           <img
             onClick={() => setComponent("Home")}
@@ -131,6 +150,7 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <ul className="pt-10">
+          {/* login */}
           <li
             className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-md`}>
             {!!userInfo ? (
@@ -169,6 +189,7 @@ const Home: NextPage = () => {
               </button>
             )}
           </li>
+          {/* menus */}
           {userInfo &&
             menus.map((menu, idx) => (
               <li
@@ -189,6 +210,27 @@ const Home: NextPage = () => {
                 </button>
               </li>
             ))}
+          {/* logout */}
+          {userInfo && (
+            <li
+              className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-md`}>
+              <button
+                className="flex items-center gap-x-2 cursor-pointer pr-1"
+                onClick={logoutUser}>
+                <img
+                  className="w-8 h-8"
+                  src="/static/images/logout.svg"
+                  alt="Face Book Login"
+                />
+                <span
+                  className={`${
+                    !open && "hidden"
+                  } origin-left duration-200 text-left`}>
+                  Login
+                </span>
+              </button>
+            </li>
+          )}
         </ul>
       </div>
       <div className="pt-6 text-2xl font-semibold flex-1 h-screen bg-slate-200">
