@@ -65,11 +65,15 @@ const Home: NextPage = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) return response.json();
         throw new Error("Failed to authenticate user");
       })
       .then((responseJson) => {
-        window.open("/", "_self");
+        setComponent("Logout");
+        setTimeout(() => {
+          window.open("/", "_self");
+        }, 2500);
       })
       .catch((error) => {
         console.log(error);
