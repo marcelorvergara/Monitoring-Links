@@ -17,7 +17,6 @@ export default function Manage(props: IManageProps) {
     getUserUrls(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
-        console.log(response);
         if (response.status === 200) return response.json();
         throw new Error("Failed to get URLs");
       })
@@ -37,7 +36,6 @@ export default function Manage(props: IManageProps) {
         throw new Error("Failed to delete URL");
       })
       .then((responseJson) => {
-        console.log(responseJson);
         setFeedback(responseJson);
       })
       .catch((error) => {

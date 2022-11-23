@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import HowTo from "../components/howto";
 import LatestResults from "../components/LatestResults";
 import LinkMonitorData from "../components/LinkMonitorData";
 import Login from "../components/Login";
@@ -101,6 +102,12 @@ const Home: NextPage = () => {
       path: "/",
       gap: false,
     },
+    {
+      title: "HowTo",
+      src: "/static/images/howto.svg",
+      path: "/",
+      gap: false,
+    },
   ];
 
   const [component, setComponent] = useState<string>();
@@ -116,6 +123,8 @@ const Home: NextPage = () => {
         return <LinkMonitorData userInfo={userInfo!} />;
       case "Manage":
         return <Manage userInfo={userInfo!} />;
+      case "HowTo":
+        return <HowTo />;
       case "Logout":
         return <Logout />;
       default:

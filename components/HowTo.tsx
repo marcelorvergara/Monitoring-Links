@@ -21,7 +21,7 @@ export default function HowTo() {
             alt="login button"
             className="w-10 h-10"
           />
-          <span>Configure a URL to monitor</span>
+          <span className="bg-black">Configure a URL to monitor</span>
         </div>
         <div className="flex gap-2 bg-gray-400 px-2 py-2.5 rounded text-white">
           <img
