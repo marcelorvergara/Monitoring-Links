@@ -165,7 +165,7 @@ const Home: NextPage = () => {
         <ul className="pt-10">
           {/* login */}
           <li
-            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-md`}>
+            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer pl-0.5 md:hover:bg-slate-500 rounded-md`}>
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1">
                 <img
@@ -181,7 +181,11 @@ const Home: NextPage = () => {
                 />
                 <span
                   className={`${!open && "hidden"} origin-left duration-200`}>
-                  {userInfo.displayName}
+                  {`${
+                    !!userInfo.displayName
+                      ? userInfo.displayName
+                      : userInfo.name
+                  }`}
                 </span>
               </div>
             ) : (
@@ -212,12 +216,12 @@ const Home: NextPage = () => {
                 } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
-                  className="flex gap-x-2 items-center">
+                  className="flex gap-x-2 items-center justify-center">
                   <img className="w-8 h-8" src={menu.src} alt={menu.title} />
                   <span
                     className={`${
                       !open && "hidden"
-                    } origin-left duration-200 text-left`}>
+                    } origin-left duration-300 text-left`}>
                     {menu.title}
                   </span>
                 </button>
@@ -239,7 +243,7 @@ const Home: NextPage = () => {
                   className={`${
                     !open && "hidden"
                   } origin-left duration-200 text-left`}>
-                  Login
+                  Logout
                 </span>
               </button>
             </li>

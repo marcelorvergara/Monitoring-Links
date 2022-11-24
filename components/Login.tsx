@@ -8,7 +8,7 @@ export default function Login() {
       <div className="w-full md:w-11/12 md:px-8 px-6">
         <table className="table w-full">
           <thead>
-            <tr className="flex-1  text-lg">
+            <tr className="flex-1 text-center text-lg">
               <th className="align-top">Login</th>
             </tr>
           </thead>
