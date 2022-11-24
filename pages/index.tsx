@@ -106,7 +106,7 @@ const Home: NextPage = () => {
       title: "HowTo",
       src: "/static/images/howto.svg",
       path: "/",
-      gap: false,
+      gap: true,
     },
   ];
 
@@ -212,7 +212,7 @@ const Home: NextPage = () => {
               <li
                 key={idx}
                 className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
-                  menu.gap ? "mt-8" : "mt-1"
+                  menu.gap ? "mt-64" : "mt-1"
                 } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
