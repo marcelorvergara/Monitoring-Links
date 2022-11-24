@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import HowTo from "../components/howto";
+import HowTo from "../components/HowTo";
 import LatestResults from "../components/LatestResults";
 import LinkMonitorData from "../components/LinkMonitorData";
 import Login from "../components/Login";
