@@ -149,12 +149,12 @@ const Home: NextPage = () => {
           onClick={() => setOpen(!open)}
           src="/static/images/menu_open.svg"
           alt="menu button"
-          className={`bg-slate-300 absolute cursor-pointer rounded -right-3 top-20 w-7 border-2 border-slate-600 ${
+          className={`bg-slate-300 absolute cursor-pointer rounded-sm -right-3 top-20 w-7 border-2 border-slate-600 ${
             !open && "rotate-180"
           }`}
         />
         {/* home */}
-        <div className="flex flex-col gap-x-3 items-start">
+        <div className="flex flex-col gap-x-3 items-center">
           <img
             onClick={() => setComponent("Home")}
             src="/static/images/logo.svg"
@@ -164,7 +164,7 @@ const Home: NextPage = () => {
             }`}
           />
           <h1
-            className={`text-white origin-left font-medium text-xs duration-300 -mr-20 ${
+            className={`text-white font-bold origin-left text-xs duration-300 mt-2 ${
               !open && "scale-0"
             }`}>
             Monitoring Links
@@ -173,11 +173,11 @@ const Home: NextPage = () => {
         <ul className="pt-10">
           {/* login */}
           <li
-            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer pl-0.5 md:hover:bg-slate-500 rounded-md`}>
+            className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer pl-0.5 md:hover:bg-slate-500 rounded-sm`}>
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1">
                 <img
-                  className="w-8 h-8 rounded"
+                  className="w-8 h-8 rounded-sm"
                   src={`${
                     !!userInfo.picture
                       ? userInfo.picture.data.url
@@ -219,8 +219,8 @@ const Home: NextPage = () => {
             menus.map((menu, idx) => (
               <li
                 key={idx}
-                className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
-                  menu.gap ? "mt-3 border-t-2 rounded-none" : "mt-1"
+                className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-sm ${
+                  menu.gap ? "mt-3 border-t-2 rounded-sm" : "mt-1"
                 } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
@@ -238,7 +238,7 @@ const Home: NextPage = () => {
           {/* logout */}
           {userInfo && (
             <li
-              className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-md`}>
+              className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-sm mt-2`}>
               <button
                 className="flex items-center gap-x-2 cursor-pointer pr-1"
                 onClick={logoutUser}>

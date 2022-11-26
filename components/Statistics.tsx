@@ -32,7 +32,7 @@ export default function Statistics(props: IStatisticsProps) {
   return (
     <main className="flex justify-center mt-2 text-xs">
       <div className="w-full sm:w-6/12 md:px-8 pl-6">
-        <div className="w-full md:w-11/12 md:px-8">
+        <div className="w-full md:w-11/12 md:px-8 pr-1">
           <table className="table-fixed w-full">
             <thead>
               <tr className="flex-1 min-w-full text-sm text-left">
@@ -66,7 +66,7 @@ export default function Statistics(props: IStatisticsProps) {
                 </tr>
               ) : (
                 urlStatistics.map((item: IURLsStatistics, i: number) => (
-                  <tr key={i}>
+                  <tr key={i} className="border-2 border-gray-400">
                     <td className="truncate">
                       {item.url
                         .toLowerCase()
