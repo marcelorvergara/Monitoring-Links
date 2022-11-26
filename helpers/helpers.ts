@@ -35,6 +35,18 @@ export async function getUserUrls(id: string) {
   });
 }
 
+export async function geStatistics(id: string) {
+  return fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + `/statistics/${id}`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "applictacion/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": "true",
+    },
+  });
+}
+
 export function parseDate(date: string) {
   const newDate = new Date(date);
   return `${newDate.toLocaleTimeString()} - ${newDate.toLocaleDateString()}`;

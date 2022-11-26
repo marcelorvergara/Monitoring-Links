@@ -3,13 +3,11 @@ export default function DefaultMain() {
     <main className="flex flex-col items-center justify-center px-6 text-center">
       <h1 className="text-xl sm:text-2xl font-bold text-slate-500">
         Welcome to <br />
-        <a className="text-slate-800" href="#">
-          Monitoring Links
-        </a>
+        <span className="text-slate-800">Monitoring Links</span>
       </h1>
       <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
         <div className="m-2 basis-11/12 p-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in">
-          <h3 className="text-md text-sm mb-2">Login</h3>
+          <h2 className="text-md text-sm mb-2">Login</h2>
           <p className="flex items-start gap-2 text-xs">
             <img
               className="bg-gray-400 p-1 rounded"
@@ -22,7 +20,7 @@ export default function DefaultMain() {
       </div>
       <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
         <div className="m-2 basis-11/12 p-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in">
-          <h3 className="text-md text-sm mb-2">Documentation</h3>
+          <h2 className="text-md text-sm mb-2">Documentation</h2>
           <p className="flex items-start gap-2 text-xs">
             <img
               className="bg-gray-400 p-1 rounded"

@@ -45,7 +45,7 @@ export default function Manage(props: IManageProps) {
 
   return (
     <main className="flex justify-center mt-2 text-xs">
-      <div className="w-full sm:w-6/12 md:px-8 px-6">
+      <div className="w-full sm:w-6/12">
         <div className="w-full md:w-11/12 md:px-8 px-6">
           <table className="table w-full">
             <thead>
@@ -81,6 +81,7 @@ export default function Manage(props: IManageProps) {
                     <td className="border-2 border-gray-400 py-2 px-1.5 text-right">
                       <span>
                         {item.url
+                          .toLowerCase()
                           .replace("https://", "")
                           .replace("http://", "")}
                       </span>
@@ -97,25 +98,27 @@ export default function Manage(props: IManageProps) {
             </tbody>
           </table>
         </div>
-        {feedback.error ? (
-          <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
-            <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-              Registration not completed
+        <div className="w-full md:w-11/12 md:px-8 px-6">
+          {feedback.error ? (
+            <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
+              <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                Registration not completed
+              </div>
+              <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <p>{feedback.error}</p>
+              </div>
             </div>
-            <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-              <p>{feedback.error}</p>
+          ) : !!feedback.url ? (
+            <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
+              <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
+                Success
+              </div>
+              <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+                <p>{feedback.url} removed. </p>
+              </div>
             </div>
-          </div>
-        ) : !!feedback.url ? (
-          <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
-            <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
-              Success
-            </div>
-            <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
-              <p>{feedback.url} removed. </p>
-            </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
     </main>
   );

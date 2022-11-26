@@ -7,6 +7,7 @@ import Login from "../components/Login";
 import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
 import Manage from "../components/Manage";
+import Statistics from "../components/Statistics";
 
 export interface Data {
   height: number;
@@ -103,6 +104,12 @@ const Home: NextPage = () => {
       gap: false,
     },
     {
+      title: "Statistics",
+      src: "/static/images/statistics.svg",
+      path: "/",
+      gap: false,
+    },
+    {
       title: "HowTo",
       src: "/static/images/howto.svg",
       path: "/",
@@ -127,6 +134,8 @@ const Home: NextPage = () => {
         return <HowTo />;
       case "Logout":
         return <Logout />;
+      case "Statistics":
+        return <Statistics userInfo={userInfo!} />;
       default:
         return <MainDefault />;
     }
@@ -171,10 +180,10 @@ const Home: NextPage = () => {
                 <img
                   className="w-8 h-8 rounded"
                   src={`${
-                    !!userInfo
-                      ? !!userInfo.picture
-                        ? userInfo.picture.data.url
-                        : userInfo.photos[0].value
+                    !!userInfo.picture
+                      ? userInfo.picture.data.url
+                      : !!userInfo.photos[0]
+                      ? userInfo.photos[0].value
                       : "/static/images/login.svg"
                   }`}
                   alt="User Info"
@@ -212,7 +221,7 @@ const Home: NextPage = () => {
               <li
                 key={idx}
                 className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-md ${
-                  menu.gap ? "mt-64" : "mt-1"
+                  menu.gap ? "mt-3 border-t-2 rounded-none" : "mt-1"
                 } ${component === menu.title ? "bg-slate-500" : ""}`}>
                 <button
                   onClick={() => setComponent(menu.title)}
@@ -242,7 +251,7 @@ const Home: NextPage = () => {
                 <span
                   className={`${
                     !open && "hidden"
-                  } origin-left duration-200 text-left`}>
+                  } origin-left duration-300 text-left`}>
                   Logout
                 </span>
               </button>
