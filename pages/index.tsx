@@ -98,14 +98,14 @@ const Home: NextPage = () => {
       gap: false,
     },
     {
-      title: "Manage",
-      src: "/static/images/manage.svg",
+      title: "Statistics",
+      src: "/static/images/statistics.svg",
       path: "/",
       gap: false,
     },
     {
-      title: "Statistics",
-      src: "/static/images/statistics.svg",
+      title: "Manage",
+      src: "/static/images/manage.svg",
       path: "/",
       gap: false,
     },

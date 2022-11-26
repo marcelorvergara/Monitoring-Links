@@ -5,9 +5,14 @@ export default function DefaultMain() {
         Welcome to <br />
         <span className="text-slate-800">Monitoring Links</span>
       </h1>
+      <h2 className="text-sm mt-4 mb-2 font-body">
+        Check out this! Here you can monitor your website with just a few
+        clicks. Try it now and you even can benchmark with other sites how is
+        your service performing.
+      </h2>
       <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
         <div className="m-2 basis-11/12 p-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in">
-          <h2 className="text-md text-sm mb-2">Login</h2>
+          <h3 className="text-md text-sm mb-2">Login</h3>
           <p className="flex items-start gap-2 text-xs">
             <img
               className="bg-gray-400 p-1 rounded"
@@ -20,7 +25,7 @@ export default function DefaultMain() {
       </div>
       <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
         <div className="m-2 basis-11/12 p-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in">
-          <h2 className="text-md text-sm mb-2">Documentation</h2>
+          <h3 className="text-md text-sm mb-2">Documentation</h3>
           <p className="flex items-start gap-2 text-xs">
             <img
               className="bg-gray-400 p-1 rounded"
