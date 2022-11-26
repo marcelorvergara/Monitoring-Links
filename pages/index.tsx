@@ -49,7 +49,6 @@ const Home: NextPage = () => {
         setUserInfo(responseJson.user);
       })
       .catch((error) => {
-        console.error(error);
         setUserInfo(undefined);
       });
   }, []);

@@ -15,7 +15,7 @@ export default function DefaultMain() {
           <h3 className="text-md text-sm mb-2">Login</h3>
           <p className="flex items-start gap-2 text-xs">
             <img
-              className="bg-gray-400 p-1 rounded"
+              className="bg-gray-400 p-1 rounded h-12 w-12"
               src="/static/images/login.svg"
               alt="how to use Monitoring Links"
             />
@@ -28,7 +28,7 @@ export default function DefaultMain() {
           <h3 className="text-md text-sm mb-2">Documentation</h3>
           <p className="flex items-start gap-2 text-xs">
             <img
-              className="bg-gray-400 p-1 rounded"
+              className="bg-gray-400 p-1 rounded h-12 w-12"
               src="/static/images/howto.svg"
               alt="how to use Monitoring Links"
             />
