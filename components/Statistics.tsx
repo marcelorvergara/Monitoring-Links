@@ -1,94 +1,131 @@
 import { useEffect, useState } from "react";
-import { geStatistics } from "../helpers/helpers";
-import { IFeedback } from "../interfaces/IFeedback";
-import { IURLsStatistics } from "../interfaces/IURLsStatistics";
-import { IURLsStatus } from "../interfaces/IURLsStatus";
+import { geStatisticsLastHour, parseDate } from "../helpers/helpers";
 import { ISession } from "../pages";
 
 interface IStatisticsProps {
   userInfo: ISession;
 }
 
+interface IRespObj {
+  url: string;
+  load_time: number[];
+  created_at: Date[] | number[];
+}
+
+interface IDataset {
+  label: string;
+  data: number[];
+}
+
+interface IChart {
+  labels: string[];
+  datasets: IDataset[];
+}
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: false,
+      text: "Chart.js Line Chart",
+    },
+  },
+};
+
 export default function Statistics(props: IStatisticsProps) {
-  const [urlStatistics, setUrlStatistics] = useState<IURLsStatistics[]>([]);
+  const [lastHourStatistics, setLastHourStatistics] = useState<IChart[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [feedback, setFeedback] = useState<IFeedback>({});
 
   useEffect(() => {
-    geStatistics(props.userInfo.id)
+    geStatisticsLastHour(props.userInfo.id)
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
-        setUrlStatistics(responseJson);
+        let result: IRespObj[] = [];
+        for (let respObj of responseJson) {
+          const urlExist = result.find((f) => f.url === respObj.url);
+          console.log(respObj.created_at);
+          if (urlExist === undefined) {
+            const lt: number[] = [];
+            const ca: Date[] = [];
+            lt[0] = parseFloat(respObj.load_time);
+            ca[0] = respObj.created_at.split("T")[1].split(":")[0];
+            result.push({
+              url: respObj.url,
+              load_time: lt,
+              created_at: ca,
+            });
+          } else {
+            const idx = result.findIndex((f) => f.url === respObj.url);
+            result[idx].load_time.push(parseFloat(respObj.load_time));
+            result[idx].created_at.push(
+              respObj.created_at.split("T")[1].split(":")[0]
+            );
+          }
+        }
+        setIsLoading(false);
+        let chartData: any = [];
+        result.forEach((el) => {
+          chartData.push({
+            labels: el.created_at,
+            datasets: [{ label: el.url, data: el.load_time }],
+          });
+        });
+        console.log(chartData);
+        setLastHourStatistics(chartData);
       })
       .catch((error) => {
-        setUrlStatistics([]);
+        setLastHourStatistics([]);
       });
-  }, [feedback]);
+  }, []);
 
   return (
-    <main className="flex justify-center mt-2 text-xs">
-      <div className="w-full sm:w-6/12 md:px-8 pl-6">
-        <div className="w-full md:w-11/12 md:px-8 pr-1">
-          <table className="table-fixed w-full">
-            <thead>
-              <tr className="flex-1 min-w-full text-sm text-left">
-                <th className="align-top">URL</th>
-                <th className="align-top">MIN</th>
-                <th className="align-top">MAX</th>
-                <th className="align-top">AVG</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isLoading ? (
-                <tr>
-                  <td colSpan={4}>
-                    <div className="flex w-full items-center justify-center">
-                      <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
-                    </div>
-                  </td>
-                </tr>
-              ) : !urlStatistics.length ? (
-                <tr className="border-2 border-gray-400">
-                  <td>
-                    <div className="p-6 text-2xl">
-                      Go to{" "}
-                      <img
-                        src="/static/images/newmonitor.svg"
-                        alt="New monitor"
-                      />{" "}
-                      to register your first Monitoring Link!
-                    </div>
-                  </td>
-                </tr>
-              ) : (
-                urlStatistics.map((item: IURLsStatistics, i: number) => (
-                  <tr key={i} className="border-2 border-gray-400">
-                    <td className="truncate">
-                      {item.url
-                        .toLowerCase()
-                        .replace("https://", "")
-                        .replace("http://", "")}
-                    </td>
-                    <td>
-                      <span>{item.min}s.</span>
-                    </td>
-                    <td>
-                      <span>{item.max}s.</span>
-                    </td>
-                    <td>
-                      <span>{parseFloat(item.avg).toFixed(2)}s.</span>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+    <main>
+      {isLoading ? (
+        <div className="flex w-full items-center justify-center">
+          <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
         </div>
-      </div>
+      ) : !lastHourStatistics.length ? (
+        <div className="border-2 border-gray-400 m-5">
+          <div className="p-6 text-2xl">
+            Go to <img src="/static/images/newmonitor.svg" alt="New monitor" />{" "}
+            to register your first Monitoring Link!
+          </div>
+        </div>
+      ) : (
+        lastHourStatistics.map((item: IChart, idx: number) => (
+          <div key={idx} className="w-64 pl-4">
+            <Line options={options} data={item} />
+          </div>
+        ))
+      )}
     </main>
   );
 }

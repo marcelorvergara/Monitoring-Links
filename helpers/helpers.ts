@@ -47,9 +47,19 @@ export async function geStatistics(id: string) {
   });
 }
 
-export function parseDate(date: string) {
-  const newDate = new Date(date);
-  return `${newDate.toLocaleTimeString()} - ${newDate.toLocaleDateString()}`;
+export async function geStatisticsLastHour(id: string) {
+  return fetch(
+    process.env.NEXT_PUBLIC_BACKEND_SRV + `/statistics/lastDay/${id}`,
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    }
+  );
 }
 
 export async function deleteUrlHelper(id: number): Promise<any> {
@@ -62,4 +72,9 @@ export async function deleteUrlHelper(id: number): Promise<any> {
       "Access-Control-Allow-Credentials": "true",
     },
   });
+}
+
+export function parseDate(date: string) {
+  const newDate = new Date(date);
+  return `${newDate.toLocaleTimeString()} - ${newDate.toLocaleDateString()}`;
 }

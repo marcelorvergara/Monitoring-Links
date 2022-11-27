@@ -8,6 +8,7 @@ import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
 import Manage from "../components/Manage";
 import Statistics from "../components/Statistics";
+import Table from "../components/Table";
 
 export interface Data {
   height: number;
@@ -97,6 +98,12 @@ const Home: NextPage = () => {
       gap: false,
     },
     {
+      title: "Table",
+      src: "/static/images/table.svg",
+      path: "/",
+      gap: false,
+    },
+    {
       title: "Statistics",
       src: "/static/images/statistics.svg",
       path: "/",
@@ -133,8 +140,11 @@ const Home: NextPage = () => {
         return <HowTo />;
       case "Logout":
         return <Logout />;
+      case "Table":
+        return <Table userInfo={userInfo!} />;
       case "Statistics":
         return <Statistics userInfo={userInfo!} />;
+
       default:
         return <MainDefault />;
     }
@@ -203,7 +213,7 @@ const Home: NextPage = () => {
                 <img
                   className="w-8 h-8"
                   src="/static/images/login.svg"
-                  alt="Face Book Login"
+                  alt="Login facebook or google"
                 />
                 <span
                   className={`${
