@@ -71,7 +71,6 @@ export default function Statistics(props: IStatisticsProps) {
         let result: IRespObj[] = [];
         for (let respObj of responseJson) {
           const urlExist = result.find((f) => f.url === respObj.url);
-          console.log(respObj.created_at);
           if (urlExist === undefined) {
             const lt: number[] = [];
             const ca: Date[] = [];
@@ -98,7 +97,6 @@ export default function Statistics(props: IStatisticsProps) {
             datasets: [{ label: el.url, data: el.load_time }],
           });
         });
-        console.log(chartData);
         setLastHourStatistics(chartData);
       })
       .catch((error) => {
