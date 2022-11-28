@@ -9,7 +9,7 @@ interface IStatisticsProps {
 interface IRespObj {
   url: string;
   load_time: number[];
-  created_at: Date[] | number[];
+  created_at: string[];
 }
 
 interface IDataset {
@@ -73,9 +73,11 @@ export default function Statistics(props: IStatisticsProps) {
           const urlExist = result.find((f) => f.url === respObj.url);
           if (urlExist === undefined) {
             const lt: number[] = [];
-            const ca: Date[] = [];
+            const ca: string[] = [];
             lt[0] = parseFloat(respObj.load_time);
-            ca[0] = respObj.created_at.split("T")[1].split(":")[0];
+            // apply tz
+            const newDate = parseDate(respObj.created_at);
+            ca[0] = newDate.split(":")[0] + "h";
             result.push({
               url: respObj.url,
               load_time: lt,
@@ -84,9 +86,9 @@ export default function Statistics(props: IStatisticsProps) {
           } else {
             const idx = result.findIndex((f) => f.url === respObj.url);
             result[idx].load_time.push(parseFloat(respObj.load_time));
-            result[idx].created_at.push(
-              respObj.created_at.split("T")[1].split(":")[0]
-            );
+            // apply tz
+            const newDate = parseDate(respObj.created_at);
+            result[idx].created_at.push(newDate.split(":")[0] + "h");
           }
         }
         setIsLoading(false);

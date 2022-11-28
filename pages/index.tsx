@@ -248,7 +248,7 @@ const Home: NextPage = () => {
           {/* logout */}
           {userInfo && (
             <li
-              className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-sm mt-2`}>
+              className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1 md:hover:bg-slate-500 rounded-sm`}>
               <button
                 className="flex items-center gap-x-2 cursor-pointer pr-1"
                 onClick={logoutUser}>
