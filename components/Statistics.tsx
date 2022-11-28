@@ -107,7 +107,7 @@ export default function Statistics(props: IStatisticsProps) {
   }, []);
 
   return (
-    <main>
+    <main className="flex flex-wrap w-full gap-1">
       {isLoading ? (
         <div className="flex w-full items-center justify-center">
           <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
@@ -121,7 +121,7 @@ export default function Statistics(props: IStatisticsProps) {
         </div>
       ) : (
         lastHourStatistics.map((item: IChart, idx: number) => (
-          <div key={idx} className="w-64 pl-4">
+          <div className="w-64 sm:w-3/12 ml-4">
             <Line options={options} data={item} />
           </div>
         ))

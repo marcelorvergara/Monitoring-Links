@@ -268,7 +268,7 @@ const Home: NextPage = () => {
           )}
         </ul>
       </div>
-      <div className="pt-6 text-2xl font-semibold flex-1 h-screen bg-slate-200">
+      <div className="text-2xl font-semibold flex-1 h-screen bg-slate-200">
         {switchComonent()}
       </div>
     </div>
