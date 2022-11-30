@@ -1,7 +1,7 @@
 export default function DefaultMain() {
   return (
-    <main className="flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-xl sm:text-2xl font-bold text-slate-500">
+    <main className="flex flex-col items-center justify-center px-6 text-center mt-4">
+      <h1 className="text-xl sm:text-2xl font-bold text-slate-600">
         Welcome to <br />
         <span className="text-slate-800">Monitoring Links</span>
       </h1>

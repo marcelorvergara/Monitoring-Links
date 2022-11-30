@@ -27,7 +27,7 @@ export default function LatestResults(props: ILatestResultsProps) {
   }, []);
 
   return (
-    <main className="flex justify-center mt-2 text-xs">
+    <main className="flex justify-center text-xs mt-2">
       <div className="w-full sm:w-6/12 md:px-8 px-6">
         <table className="table w-full">
           <thead>
@@ -64,7 +64,11 @@ export default function LatestResults(props: ILatestResultsProps) {
               </tr>
             ) : (
               urlStatus.map((item: IURLsStatus, i: number) => (
-                <tr key={i} className="border-2 border-gray-400">
+                <tr
+                  key={i}
+                  className={`${
+                    item.status !== "200" ? "bg-green-100" : "bg-red-100"
+                  } border-2 border-gray-400`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
                     <div>

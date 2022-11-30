@@ -154,7 +154,7 @@ const Home: NextPage = () => {
       <div
         className={`${
           open ? "w-40" : "w-16"
-        } duration-300 h-screen p-2 pt-2 bg-blue-400 relative`}>
+        } duration-300 h-screen p-2 pt-2 bg-slate-700 relative`}>
         <img
           onClick={() => setOpen(!open)}
           src="/static/images/menu_open.svg"

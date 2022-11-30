@@ -107,7 +107,10 @@ export default function Statistics(props: IStatisticsProps) {
   }, []);
 
   return (
-    <main className="flex flex-wrap w-full gap-1">
+    <main className="flex flex-wrap items-center justify-center w-full gap-1 mt-2">
+      <div className="text-center text-lg font-bold">
+        How To use Monitoring Links
+      </div>
       {isLoading ? (
         <div className="flex w-full items-center justify-center">
           <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>

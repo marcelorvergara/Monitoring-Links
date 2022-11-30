@@ -31,6 +31,9 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   return (
     <form className="flex justify-center mt-2">
       <div className="w-full sm:w-6/12 text-left ">
+        <div className="text-center text-lg font-bold">
+          Register URL to Monitor
+        </div>
         <div className="text-sm mt-4 md:w-full md:px-8 m-4">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
