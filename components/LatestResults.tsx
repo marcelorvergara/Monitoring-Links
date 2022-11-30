@@ -13,15 +13,16 @@ export default function LatestResults(props: ILatestResultsProps) {
   useEffect(() => {
     getUrlStatus(props.userInfo.id)
       .then((response) => {
-        setIsLoading(false);
         if (response.status === 200) return response.json();
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
         // limiting the latest results
         setUrlStatus(responseJson.splice(0, 11));
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
         setUrlStatus([]);
       });
   }, []);

@@ -77,6 +77,22 @@ export default function Login() {
                   </div>
                 </td>
               </tr>
+              <tr>
+                <td className="flex items-start justify-center mt-4">
+                  <div className="w-full sm:w-4/12">
+                    After login, your name, profile picture link and user id are
+                    stored in our database only for this application use.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td className="flex items-start justify-center mt-2">
+                  <div className="w-full sm:w-4/12">
+                    Your information will not be shared or used for other
+                    purpose.
+                  </div>
+                </td>
+              </tr>
             </>
           </tbody>
         </table>
