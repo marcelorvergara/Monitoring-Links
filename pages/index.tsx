@@ -198,7 +198,9 @@ const Home: NextPage = () => {
                   alt="User Info"
                 />
                 <span
-                  className={`${!open && "hidden"} origin-left duration-200`}>
+                  className={`${
+                    !open && "hidden"
+                  } origin-left duration-300 truncate`}>
                   {`${
                     !!userInfo.displayName
                       ? userInfo.displayName
@@ -239,7 +241,7 @@ const Home: NextPage = () => {
                   <span
                     className={`${
                       !open && "hidden"
-                    } origin-left duration-300 text-left`}>
+                    } origin-left duration-300 text-left truncate`}>
                     {menu.title}
                   </span>
                 </button>
