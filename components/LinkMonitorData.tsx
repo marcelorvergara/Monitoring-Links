@@ -12,6 +12,7 @@ interface ILinkMonitorDataProps {
 export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [url, setUrl] = useState<string>("");
   const [feedback, setFeedback] = useState<IFeedback>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // check if logged in
   useEffect(() => {
@@ -29,19 +30,24 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   async function registerUrl(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault(); // fetch get cancelled when this is not present
+    setIsLoading(true);
     try {
       const resp = await setUrlMonitor(url, props.userInfo.id);
+      const respJson = await resp.json();
       if (resp.status === 201) {
-        const respJson = await resp.json();
         setFeedback(respJson);
+      } else {
+        setFeedback({ error: respJson.error.split(":")[1] });
       }
     } catch (err) {
       setFeedback({ error: "Invalid URL or firewall block rule" });
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
-    <form className="flex justify-center mt-2">
+    <form className="flex flex-wrap justify-center mt-2">
       <div className="w-full sm:w-6/12 text-left ">
         <div className="text-center text-lg font-bold">
           Register URL to Monitor
@@ -88,6 +94,15 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
           </div>
         ) : null}
       </div>
+      {isLoading ? (
+        <div className="flex-none w-full">
+          <div>
+            <div className="flex w-full items-center justify-center">
+              <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </form>
   );
 }
