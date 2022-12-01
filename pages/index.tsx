@@ -123,7 +123,7 @@ const Home: NextPage = () => {
     },
   ];
 
-  const [component, setComponent] = useState<string>();
+  const [component, setComponent] = useState<string>("");
   function switchComonent() {
     switch (component) {
       case "Home":
@@ -131,19 +131,49 @@ const Home: NextPage = () => {
       case "Login":
         return <Login />;
       case "Latest Results":
-        return <LatestResults userInfo={userInfo!} />;
+        return (
+          <LatestResults
+            userInfo={userInfo!}
+            switchComonent={switchComonent}
+            setComponent={setComponent}
+          />
+        );
       case "New Monitor":
-        return <LinkMonitorData userInfo={userInfo!} />;
+        return (
+          <LinkMonitorData
+            userInfo={userInfo!}
+            switchComonent={switchComonent}
+            setComponent={setComponent}
+          />
+        );
       case "Manage":
-        return <Manage userInfo={userInfo!} />;
+        return (
+          <Manage
+            userInfo={userInfo!}
+            switchComonent={switchComonent}
+            setComponent={setComponent}
+          />
+        );
       case "HowTo":
         return <HowTo />;
       case "Logout":
         return <Logout />;
       case "Table":
-        return <Table userInfo={userInfo!} />;
+        return (
+          <Table
+            userInfo={userInfo!}
+            switchComonent={switchComonent}
+            setComponent={setComponent}
+          />
+        );
       case "Statistics":
-        return <Statistics userInfo={userInfo!} />;
+        return (
+          <Statistics
+            userInfo={userInfo!}
+            switchComonent={switchComonent}
+            setComponent={setComponent}
+          />
+        );
 
       default:
         return <MainDefault />;

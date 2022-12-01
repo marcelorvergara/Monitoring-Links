@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { geStatisticsLastHour, parseDate } from "../helpers/helpers";
 import { ISession } from "../pages";
 
 interface IStatisticsProps {
   userInfo: ISession;
+  switchComonent: () => void;
+  setComponent: React.Dispatch<SetStateAction<string>>;
 }
 
 interface IRespObj {
@@ -63,8 +65,12 @@ export default function Statistics(props: IStatisticsProps) {
   useEffect(() => {
     geStatisticsLastHour(props.userInfo.id)
       .then((response) => {
-        setIsLoading(false);
         if (response.status === 200) return response.json();
+        if (response.status === 401) {
+          props.setComponent("Login");
+          props.switchComonent();
+        }
+        setIsLoading(false);
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
@@ -91,7 +97,6 @@ export default function Statistics(props: IStatisticsProps) {
             result[idx].created_at.push(newDate.split(":")[0] + "h");
           }
         }
-        setIsLoading(false);
         let chartData: any = [];
         result.forEach((el) => {
           chartData.push({
@@ -100,6 +105,7 @@ export default function Statistics(props: IStatisticsProps) {
           });
         });
         setLastHourStatistics(chartData);
+        setIsLoading(false);
       })
       .catch((error) => {
         setLastHourStatistics([]);

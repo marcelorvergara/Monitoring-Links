@@ -1,15 +1,27 @@
-import { useState } from "react";
-import { setUrlMonitor } from "../helpers/helpers";
+import { SetStateAction, useEffect, useState } from "react";
+import { getUrlStatus, setUrlMonitor } from "../helpers/helpers";
 import { IFeedback } from "../interfaces/IFeedback";
 import { ISession } from "../pages";
 
 interface ILinkMonitorDataProps {
   userInfo: ISession;
+  switchComonent: () => void;
+  setComponent: React.Dispatch<SetStateAction<string>>;
 }
 
 export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [url, setUrl] = useState<string>("");
   const [feedback, setFeedback] = useState<IFeedback>({});
+
+  // check if logged in
+  useEffect(() => {
+    getUrlStatus(props.userInfo.id).then((response) => {
+      if (response.status === 401) {
+        props.setComponent("Login");
+        props.switchComonent();
+      }
+    });
+  }, []);
 
   function handleUrlValue(event: React.FormEvent<HTMLInputElement>) {
     setUrl(event.currentTarget.value);

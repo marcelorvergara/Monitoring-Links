@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { geStatistics } from "../helpers/helpers";
 import { IURLsStatistics } from "../interfaces/IURLsStatistics";
 import { ISession } from "../pages";
 
 interface ITableProps {
   userInfo: ISession;
+  switchComonent: () => void;
+  setComponent: React.Dispatch<SetStateAction<string>>;
 }
 
 export default function Table(props: ITableProps) {
@@ -16,6 +18,10 @@ export default function Table(props: ITableProps) {
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();
+        if (response.status === 401) {
+          props.setComponent("Login");
+          props.switchComonent();
+        }
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {

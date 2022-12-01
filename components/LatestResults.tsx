@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import { getUrlStatus, parseDate } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
 
 interface ILatestResultsProps {
   userInfo: ISession;
+  switchComonent: () => void;
+  setComponent: React.Dispatch<SetStateAction<string>>;
 }
 
 export default function LatestResults(props: ILatestResultsProps) {
@@ -14,6 +16,10 @@ export default function LatestResults(props: ILatestResultsProps) {
     getUrlStatus(props.userInfo.id)
       .then((response) => {
         if (response.status === 200) return response.json();
+        if (response.status === 401) {
+          props.setComponent("Login");
+          props.switchComonent();
+        }
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {

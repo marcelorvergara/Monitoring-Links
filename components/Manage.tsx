@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { deleteUrlHelper, getUserUrls, parseDate } from "../helpers/helpers";
 import { IFeedback } from "../interfaces/IFeedback";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
@@ -6,6 +6,8 @@ import { ISession } from "../pages";
 
 interface IManageProps {
   userInfo: ISession;
+  switchComonent: () => void;
+  setComponent: React.Dispatch<SetStateAction<string>>;
 }
 
 export default function Manage(props: IManageProps) {
@@ -18,6 +20,10 @@ export default function Manage(props: IManageProps) {
       .then((response) => {
         setIsLoading(false);
         if (response.status === 200) return response.json();
+        if (response.status === 401) {
+          props.setComponent("Login");
+          props.switchComonent();
+        }
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
