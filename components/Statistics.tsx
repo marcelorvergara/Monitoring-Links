@@ -130,7 +130,7 @@ export default function Statistics(props: IStatisticsProps) {
         </div>
       ) : (
         lastHourStatistics.map((item: IChart, idx: number) => (
-          <div className="w-64 sm:w-3/12 ml-4">
+          <div key={idx} className="w-64 sm:w-3/12 ml-4">
             <Line options={options} data={item} />
           </div>
         ))
