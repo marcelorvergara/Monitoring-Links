@@ -74,7 +74,7 @@ export default function LatestResults(props: ILatestResultsProps) {
                 <tr
                   key={i}
                   className={`${
-                    item.status !== "200" ? "bg-green-100" : "bg-red-100"
+                    parseInt(item.status) < 400 ? "bg-green-100" : "bg-red-100"
                   } border-2 border-gray-400`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
