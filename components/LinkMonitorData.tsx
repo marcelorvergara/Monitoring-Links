@@ -7,6 +7,7 @@ interface ILinkMonitorDataProps {
   userInfo: ISession;
   switchComonent: () => void;
   setComponent: React.Dispatch<SetStateAction<string>>;
+  setTotUrls: React.Dispatch<SetStateAction<number>>;
 }
 
 export default function LinkMonitorData(props: ILinkMonitorDataProps) {
@@ -36,6 +37,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
       const respJson = await resp.json();
       if (resp.status === 201) {
         setFeedback(respJson);
+        props.setTotUrls(1);
       } else {
         setFeedback({ error: respJson.error.split(":")[1] });
       }

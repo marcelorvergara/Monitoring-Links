@@ -8,6 +8,7 @@ interface IManageProps {
   userInfo: ISession;
   switchComonent: () => void;
   setComponent: React.Dispatch<SetStateAction<string>>;
+  setTotUrls: React.Dispatch<SetStateAction<number>>;
 }
 
 export default function Manage(props: IManageProps) {
@@ -27,6 +28,7 @@ export default function Manage(props: IManageProps) {
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
+        props.setTotUrls(responseJson.length);
         setUrlStatus(responseJson);
       })
       .catch((error) => {

@@ -32,6 +32,7 @@ export interface ISession {
 
 const Home: NextPage = () => {
   const [userInfo, setUserInfo] = useState<ISession | undefined>();
+  const [totUrls, setTotUrls] = useState<number>(0);
   useEffect(() => {
     fetch(process.env.NEXT_PUBLIC_BACKEND_SRV + "/auth/login/success", {
       method: "GET",
@@ -47,6 +48,7 @@ const Home: NextPage = () => {
         throw new Error("failed to authenticate user");
       })
       .then((responseJson) => {
+        setTotUrls(responseJson.totUrls);
         setUserInfo(responseJson.user);
       })
       .catch((error) => {
@@ -89,7 +91,7 @@ const Home: NextPage = () => {
       title: "New Monitor",
       src: "/static/images/newmonitor.svg",
       path: "/",
-      gap: false,
+      gap: true,
     },
     {
       title: "Latest Results",
@@ -144,6 +146,7 @@ const Home: NextPage = () => {
             userInfo={userInfo!}
             switchComonent={switchComonent}
             setComponent={setComponent}
+            setTotUrls={setTotUrls}
           />
         );
       case "Manage":
@@ -152,6 +155,7 @@ const Home: NextPage = () => {
             userInfo={userInfo!}
             switchComonent={switchComonent}
             setComponent={setComponent}
+            setTotUrls={setTotUrls}
           />
         );
       case "HowTo":
@@ -261,9 +265,16 @@ const Home: NextPage = () => {
             menus.map((menu, idx) => (
               <li
                 key={idx}
-                className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer p-1  rounded-sm ${
+                className={`text-white text-xs cursor-pointer p-1 rounded-sm ${
                   menu.gap ? "mt-3 border-t-2 rounded-sm" : "mt-1"
-                } ${component === menu.title ? "bg-slate-500" : ""}`}>
+                } ${component === menu.title ? "bg-slate-500" : ""} 
+                  ${
+                    totUrls > 0
+                      ? "visible"
+                      : menu.title === "HowTo" || menu.title === "New Monitor"
+                      ? "visible"
+                      : "invisible"
+                  }`}>
                 <button
                   onClick={() => setComponent(menu.title)}
                   className="flex gap-x-2 items-center justify-center">
