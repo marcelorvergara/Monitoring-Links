@@ -219,7 +219,7 @@ const Home: NextPage = () => {
           <li
             className={`text-white  text-xs flex items-center gap-x-2 cursor-pointer pl-0.5 md:hover:bg-slate-500 rounded-sm`}>
             {!!userInfo ? (
-              <div className="flex items-center gap-x-2 cursor-pointer p-1">
+              <div className="flex items-center gap-x-2 cursor-pointer p-1 w-full">
                 <img
                   className="w-8 h-8 rounded-sm"
                   src={`${
