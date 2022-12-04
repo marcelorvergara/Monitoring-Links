@@ -186,14 +186,12 @@ export default function Manage(props: IManageProps) {
                 </label>
                 <select
                   onChange={(opt) => setWarningTh(opt.currentTarget.value)}
+                  value={parseFloat(warningTh)}
                   name="warningThreshold"
                   id="warningThreshold"
                   className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-yellow-400 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   {thOptions.map((opt) => (
-                    <option
-                      key={opt.label}
-                      value={opt.value}
-                      selected={parseFloat(warningTh) === opt.value}>
+                    <option key={opt.label} value={opt.value}>
                       {opt.label}s.
                     </option>
                   ))}
@@ -207,14 +205,12 @@ export default function Manage(props: IManageProps) {
                 </label>
                 <select
                   onChange={(opt) => setDangerTh(opt.currentTarget.value)}
+                  value={parseFloat(dangerTh)}
                   name="dangerThreshold"
                   id="dangerThreshold"
                   className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-red-300 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   {thOptions.map((opt) => (
-                    <option
-                      key={opt.label}
-                      value={opt.value}
-                      selected={parseFloat(dangerTh) === opt.value}>
+                    <option key={opt.label} value={opt.value}>
                       {opt.label}s.
                     </option>
                   ))}
