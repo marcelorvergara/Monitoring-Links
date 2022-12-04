@@ -69,7 +69,6 @@ const Home: NextPage = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) return response.json();
         throw new Error("Failed to authenticate user");
       })

@@ -1,3 +1,4 @@
+import { it } from "node:test";
 import { useState, useEffect, SetStateAction } from "react";
 import { getUrlStatus, parseDate } from "../helpers/helpers";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
@@ -36,10 +37,11 @@ export default function LatestResults(props: ILatestResultsProps) {
   return (
     <main className="flex justify-center text-xs mt-2">
       <div className="w-full sm:w-6/12 md:px-8 px-6">
+        <div className="text-center text-lg font-bold">Latest Results</div>
         <table className="table w-full">
           <thead>
-            <tr className="flex-1 text-lg">
-              <th className="align-top  text-left">
+            <tr className="flex-1 text-sm">
+              <th className="align-top text-left">
                 Lastest <br /> Checks
               </th>
               <th className="text-end">
@@ -56,32 +58,29 @@ export default function LatestResults(props: ILatestResultsProps) {
                   </div>
                 </td>
               </tr>
-            ) : !urlStatus.length ? (
-              <tr>
-                <td>
-                  <div className="p-6 text-2xl">
-                    Go to{" "}
-                    <img
-                      src="/static/images/newmonitor.svg"
-                      alt="New monitor"
-                    />{" "}
-                    to register your first Monitoring Link!
-                  </div>
-                </td>
-              </tr>
             ) : (
               urlStatus.map((item: IURLsStatus, i: number) => (
                 <tr
                   key={i}
-                  className={`${
-                    parseInt(item.status) < 400 ? "bg-green-100" : "bg-red-100"
-                  } border-2 border-gray-400`}>
+                  className={`border-2 border-gray-400 ${
+                    item.load_time < item.warning_th
+                      ? "bg-green-100"
+                      : item.load_time > item.warning_th &&
+                        item.load_time < item.danger_th
+                      ? "bg-yellow-200"
+                      : "bg-red-200"
+                  }`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
                     <div>
                       <span>{parseDate(item.created_at)}</span>
                       <br />
-                      <span>Status code: {item.status}</span>
+                      <span
+                        className={`${
+                          parseInt(item.status) > 399 ? "bg-red-400" : ""
+                        }`}>
+                        Status code: {item.status}
+                      </span>
                       <br />
                     </div>
                   </td>

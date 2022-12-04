@@ -6,4 +6,6 @@ export interface IURLsStatus {
   status: string;
   load_time: string;
   created_at: string;
+  warning_th: string;
+  danger_th: string;
 }

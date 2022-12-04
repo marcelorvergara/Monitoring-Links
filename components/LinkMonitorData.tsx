@@ -1,4 +1,3 @@
-import { E } from "chart.js/dist/chunks/helpers.core";
 import { SetStateAction, useEffect, useState } from "react";
 import { getUrlStatus, setUrlMonitor } from "../helpers/helpers";
 import { IFeedback } from "../interfaces/IFeedback";
@@ -11,9 +10,22 @@ interface ILinkMonitorDataProps {
   setTotUrls: React.Dispatch<SetStateAction<number>>;
 }
 
+// threshold options
+const thOptions = [
+  { label: "0.5", value: 0.5 },
+  { label: "1.0", value: 1.0 },
+  { label: "1.5", value: 1.5 },
+  { label: "2.0", value: 2.0 },
+  { label: "2.5", value: 2.5 },
+  { label: "3.0", value: 3.0 },
+  { label: "5.0", value: 5.0 },
+];
+
 export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [url, setUrl] = useState<string>("");
   const [protocol, setProtocol] = useState<string>("https://");
+  const [warningTh, setWarningTh] = useState<string>("-1");
+  const [dangerTh, setDangerTh] = useState<string>("-1");
   const [feedback, setFeedback] = useState<IFeedback>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,19 +45,31 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   async function registerUrl(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault(); // fetch get cancelled when this is not present
+    setFeedback({});
     if (url.includes("http://") || url.includes("https://")) {
       setFeedback({
         error: "Invalid URL. Do not use http or https in the url string",
       });
       return;
     }
+    if (dangerTh <= warningTh) {
+      setFeedback({
+        error: "Danger Threshold must be greater than Warning Threshold",
+      });
+      return;
+    }
     setIsLoading(true);
     try {
-      const resp = await setUrlMonitor(protocol + url, props.userInfo.id);
+      const resp = await setUrlMonitor(
+        protocol + url,
+        props.userInfo.id,
+        warningTh,
+        dangerTh
+      );
       const respJson = await resp.json();
       if (resp.status === 201) {
         setFeedback(respJson);
-        props.setTotUrls(1);
+        props.setTotUrls(1); // refresh side menu
       } else {
         setFeedback({ error: respJson.error.split(":")[1] });
       }
@@ -67,12 +91,10 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
           Register URL to Monitor
         </div>
         <div className="text-sm mt-4 md:w-full md:px-8 m-4">
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-last-name">
-            Enter a URL to monitor:
-          </label>
-          <div className="flex gap-4 items-center justify-start text-sm mt-4 md:w-full m-4">
+          <div className="flex gap-4 items-center justify-start text-sm mt-4 md:w-full">
+            <label className="uppercase tracking-wide text-gray-700 font-bold text-xs">
+              Protocol
+            </label>
             <input
               onChange={(e) => onProtocolChange(e)}
               type="radio"
@@ -90,20 +112,71 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
             />
             HTTP
           </div>
+          <label
+            className="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold"
+            htmlFor="urlText">
+            URL
+          </label>
           <input
             onChange={handleUrlValue}
             value={url}
-            className="appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-last-name"
+            className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="urlText"
             type="text"
             placeholder="www.google.com"
           />
+          <div className="flex gap-7 mt-4">
+            <div>
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
+                htmlFor="warningThreshold">
+                Warning Threshold
+              </label>
+              <select
+                onChange={(opt) => setWarningTh(opt.currentTarget.value)}
+                defaultValue={"-1"}
+                name="warningThreshold"
+                id="warningThreshold"
+                className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-yellow-400 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <option value="-1" disabled>
+                  Select
+                </option>
+                {thOptions.map((opt) => (
+                  <option key={opt.label} value={opt.value}>
+                    {opt.label}s.
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
+                htmlFor="dangerThreshold">
+                Danger Threshold
+              </label>
+              <select
+                onChange={(opt) => setDangerTh(opt.currentTarget.value)}
+                defaultValue={"-1"}
+                name="dangerThreshold"
+                id="dangerThreshold"
+                className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-red-300 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <option value="-1" disabled>
+                  Select
+                </option>
+                {thOptions.map((opt) => (
+                  <option key={opt.label} value={opt.value}>
+                    {opt.label}s.
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
-        <div className="text-sm mt-4 md:w-full md:px-8 m-4 flex justify-end">
+        <div className="text-sm mt-5 md:w-full md:px-8 m-4 flex justify-end">
           <button
             onClick={registerUrl}
-            className="text-xs bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
-            Go
+            className="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
+            Register
           </button>
         </div>
         {feedback.error ? (
