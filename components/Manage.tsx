@@ -14,7 +14,6 @@ interface IManageProps {
 export default function Manage(props: IManageProps) {
   const [urlStatus, setUrlStatus] = useState<IURLsStatus[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [feedback, setFeedback] = useState<IFeedback>({});
 
   useEffect(() => {
     getUserUrls(props.userInfo.id)
@@ -34,20 +33,20 @@ export default function Manage(props: IManageProps) {
       .catch((error) => {
         setUrlStatus([]);
       });
-  }, [feedback]);
+  }, [isLoading]);
 
   async function deleteUrl(id: number) {
+    setIsLoading(true);
     deleteUrlHelper(id)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) return response.json();
         throw new Error("Failed to delete URL");
       })
       .then((responseJson) => {
-        setFeedback(responseJson);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setFeedback(error);
+        setIsLoading(false);
       });
   }
 
@@ -105,27 +104,6 @@ export default function Manage(props: IManageProps) {
               )}
             </tbody>
           </table>
-        </div>
-        <div className="w-full md:w-11/12 md:px-8 px-6">
-          {feedback.error ? (
-            <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
-              <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Registration not completed
-              </div>
-              <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-                <p>{feedback.error}</p>
-              </div>
-            </div>
-          ) : !!feedback.url ? (
-            <div role="alert" className="text-sm mt-4 md:w-full md:px-8 m-4">
-              <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
-                Success
-              </div>
-              <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
-                <p>{feedback.url} removed. </p>
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
     </main>

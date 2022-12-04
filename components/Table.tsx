@@ -35,7 +35,7 @@ export default function Table(props: ITableProps) {
   return (
     <main className="flex flex-wrap justify-center text-xs mt-2">
       <div className="text-center text-lg font-bold w-full">
-        Statistical Graphics
+        Table Statitics
       </div>
       <div className="w-full sm:w-6/12 md:px-8 pl-6 mt-4">
         <div className="w-full md:w-11/12 md:px-8 pr-1">
