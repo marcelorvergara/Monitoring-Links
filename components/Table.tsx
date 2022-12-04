@@ -25,6 +25,7 @@ export default function Table(props: ITableProps) {
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
+        console.log(responseJson);
         setUrlStatistics(responseJson);
       })
       .catch((error) => {
@@ -72,7 +73,16 @@ export default function Table(props: ITableProps) {
                 </tr>
               ) : (
                 urlStatistics.map((item: IURLsStatistics, i: number) => (
-                  <tr key={i} className="border-2 border-gray-400">
+                  <tr
+                    key={i}
+                    className={`border-2 border-gray-400 ${
+                      item.avg < item.warning_th
+                        ? "bg-green-100"
+                        : item.avg > item.warning_th &&
+                          item.avg < item.danger_th
+                        ? "bg-yellow-200"
+                        : "bg-red-200"
+                    }`}>
                     <td className="truncate">
                       {item.url
                         .toLowerCase()

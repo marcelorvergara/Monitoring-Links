@@ -12,6 +12,8 @@ interface IRespObj {
   url: string;
   load_time: number[];
   created_at: string[];
+  warning_th: string;
+  danger_th: string;
 }
 
 interface IDataset {
@@ -88,6 +90,8 @@ export default function Statistics(props: IStatisticsProps) {
               url: respObj.url,
               load_time: lt,
               created_at: ca,
+              warning_th: respObj.warning_th,
+              danger_th: respObj.danger_th,
             });
           } else {
             const idx = result.findIndex((f) => f.url === respObj.url);
@@ -98,10 +102,24 @@ export default function Statistics(props: IStatisticsProps) {
           }
         }
         let chartData: any = [];
-        result.forEach((el) => {
+        result.forEach((el, idx) => {
           chartData.push({
             labels: el.created_at,
-            datasets: [{ label: el.url, data: el.load_time }],
+            datasets: [
+              { label: el.url, data: el.load_time },
+              {
+                label: "Warning TH",
+                data: Array(el.load_time.length).fill(result[idx].warning_th),
+                borderColor: "rgb(251, 191, 36)",
+                backgroundColor: "rgb(251, 191, 36, 0.4)",
+              },
+              {
+                label: "Danger TH",
+                data: Array(el.load_time.length).fill(result[idx].danger_th),
+                borderColor: "rgb(239, 68, 68)",
+                backgroundColor: "rgb(239, 68, 68, 0.4)",
+              },
+            ],
           });
         });
         setLastHourStatistics(chartData);

@@ -12,6 +12,7 @@ interface ILinkMonitorDataProps {
 
 // threshold options
 const thOptions = [
+  { label: "0.25", value: 0.25 },
   { label: "0.5", value: 0.5 },
   { label: "1.0", value: 1.0 },
   { label: "1.5", value: 1.5 },

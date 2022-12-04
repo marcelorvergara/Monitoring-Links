@@ -18,6 +18,7 @@ interface IManageProps {
 
 // threshold options
 const thOptions = [
+  { label: "0.25", value: 0.25 },
   { label: "0.5", value: 0.5 },
   { label: "1.0", value: 1.0 },
   { label: "1.5", value: 1.5 },
@@ -102,7 +103,6 @@ export default function Manage(props: IManageProps) {
       })
       .then((responseJson) => {
         setIsLoading(false);
-        console.log(responseJson);
         if (responseJson) {
           setFeedback(responseJson);
         } else {
@@ -174,7 +174,7 @@ export default function Manage(props: IManageProps) {
         </div>
         {updateUrl ? (
           <div className="w-full md:w-11/12 md:px-8 px-2 mt-6">
-            <div className="text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm w-full font-body tracking-wider">
+            <div className="text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm w-full font-body tracking-wider truncate">
               {updateUrl.url}
             </div>
             <div className="flex gap-7 mt-2">
