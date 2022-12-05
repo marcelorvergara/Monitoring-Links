@@ -8,6 +8,7 @@ import {
 import { IFeedback } from "../interfaces/IFeedback";
 import { IURLsStatus } from "../interfaces/IURLsStatus";
 import { ISession } from "../pages";
+import ConfirmDialog from "./confirmDialog/ConfirmDialog";
 
 interface IManageProps {
   userInfo: ISession;
@@ -35,6 +36,8 @@ export default function Manage(props: IManageProps) {
   const [warningTh, setWarningTh] = useState<string>("-1");
   const [dangerTh, setDangerTh] = useState<string>("-1");
   const [feedback, setFeedback] = useState<IFeedback>({});
+  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
+  const [itemToDelete, setItemToDelete] = useState<IURLsStatus>();
 
   useEffect(() => {
     getUserUrls(props.userInfo.id)
@@ -56,9 +59,9 @@ export default function Manage(props: IManageProps) {
       });
   }, [isLoading]);
 
-  async function deleteUrl(id: number) {
+  async function deleteUrl() {
     setIsLoading(true);
-    deleteUrlHelper(id)
+    deleteUrlHelper(itemToDelete?.url_id!)
       .then((response) => {
         if (response.status === 200) return response.json();
         throw new Error("Failed to delete URL");
@@ -142,7 +145,10 @@ export default function Manage(props: IManageProps) {
                       <br />
                       <div className="flex flex-wrap items-center justify-between">
                         <button
-                          onClick={() => deleteUrl(item.url_id)}
+                          onClick={() => {
+                            setItemToDelete(item);
+                            setConfirmOpen(true);
+                          }}
                           className="mt-2 text-xs bg-red-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
                           Delete
                         </button>
@@ -158,6 +164,16 @@ export default function Manage(props: IManageProps) {
               )}
             </tbody>
           </table>
+          <ConfirmDialog
+            title={`Delete ${itemToDelete?.url
+              .toLowerCase()
+              .replace("https://", "")
+              .replace("http://", "")}?`}
+            open={confirmOpen}
+            onClose={() => setConfirmOpen(false)}
+            onConfirm={deleteUrl}>
+            All data related to this monitor will be lost!
+          </ConfirmDialog>
         </div>
         {updateUrl ? (
           <div className="w-full md:w-11/12 md:px-8 px-2 mt-6">
