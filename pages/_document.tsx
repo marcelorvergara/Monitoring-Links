@@ -17,6 +17,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Dancing+Script"
           rel="stylesheet"
         />
+        <meta name="theme-color" content="#334155" />
       </Head>
       <body>
         <Main />

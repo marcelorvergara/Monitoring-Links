@@ -87,31 +87,35 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   return (
     <form className="flex flex-wrap justify-center mt-2">
-      <div className="w-full sm:w-6/12 text-left ">
+      <div className="w-full sm:w-6/12 text-left">
         <div className="text-center text-lg font-bold">
           Register URL to Monitor
         </div>
         <div className="text-sm mt-4 md:w-full md:px-8 m-4">
-          <div className="flex gap-4 items-center justify-start text-sm mt-4 md:w-full">
+          <div className="flex flex-wrap gap-4 items-center justify-start text-sm mt-4 md:w-full">
             <label className="uppercase tracking-wide text-gray-700 font-bold text-xs">
               Protocol
             </label>
-            <input
-              onChange={(e) => onProtocolChange(e)}
-              type="radio"
-              value="https://"
-              name="https://"
-              checked={protocol === "https://"}
-            />
-            HTTPS
-            <input
-              onChange={(e) => onProtocolChange(e)}
-              type="radio"
-              value="http://"
-              name="http://"
-              checked={protocol === "http://"}
-            />
-            HTTP
+            <div className="flex items-center gap-2">
+              <input
+                onChange={(e) => onProtocolChange(e)}
+                type="radio"
+                value="https://"
+                name="https://"
+                checked={protocol === "https://"}
+              />
+              HTTPS
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                onChange={(e) => onProtocolChange(e)}
+                type="radio"
+                value="http://"
+                name="http://"
+                checked={protocol === "http://"}
+              />
+              HTTP
+            </div>
           </div>
           <label
             className="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold"

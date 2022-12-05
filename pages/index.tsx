@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import HowTo from "../components/HowTo";
 import LatestResults from "../components/LatestResults";
-import LinkMonitorData from "../components/LinkMonitorData";
+import LinkMonitorData from "../components/NewMonitor";
 import Login from "../components/Login";
 import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
