@@ -6,6 +6,7 @@ interface IStatisticsProps {
   userInfo: ISession;
   switchComonent: () => void;
   setComponent: React.Dispatch<SetStateAction<string>>;
+  open: boolean;
 }
 
 interface IRespObj {
@@ -65,6 +66,7 @@ export default function Statistics(props: IStatisticsProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setIsLoading(true);
     geStatisticsLastHour(props.userInfo.id)
       .then((response) => {
         if (response.status === 200) return response.json();
@@ -106,7 +108,12 @@ export default function Statistics(props: IStatisticsProps) {
           chartData.push({
             labels: el.created_at,
             datasets: [
-              { label: el.url, data: el.load_time },
+              {
+                label: el.url,
+                data: el.load_time,
+                borderColor: "rgb(134, 134, 134)",
+                backgroundColor: "rgb(85, 85, 85, 0.4)",
+              },
               {
                 label: "Warning TH",
                 data: Array(el.load_time.length).fill(result[idx].warning_th),
@@ -128,7 +135,7 @@ export default function Statistics(props: IStatisticsProps) {
       .catch((error) => {
         setLastHourStatistics([]);
       });
-  }, []);
+  }, [props.open]);
 
   return (
     <main className="flex flex-wrap items-center justify-center w-full gap-1 mt-2">
@@ -148,8 +155,8 @@ export default function Statistics(props: IStatisticsProps) {
         </div>
       ) : (
         lastHourStatistics.map((item: IChart, idx: number) => (
-          <div key={idx} className="w-10/12 sm:w-3/12 ml-4">
-            <Line options={options} data={item} />
+          <div key={idx} className="w-11/12 sm:w-3/12 ml-4">
+            <Line options={options} data={item} updateMode={"resize"} />
           </div>
         ))
       )}

@@ -175,6 +175,7 @@ const Home: NextPage = () => {
             userInfo={userInfo!}
             switchComonent={switchComonent}
             setComponent={setComponent}
+            open={open} // resize charts
           />
         );
 
