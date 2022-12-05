@@ -188,7 +188,7 @@ const Home: NextPage = () => {
       <div
         className={`${
           open ? "w-40" : "w-16"
-        } duration-300 h-screen p-2 pt-2 bg-[#353535] relative`}>
+        } duration-300 h-screen p-2 pt-2 bg-[#181B20] relative`}>
         <img
           onClick={() => setOpen(!open)}
           src="/static/images/menu_open.svg"
@@ -221,6 +221,7 @@ const Home: NextPage = () => {
             {!!userInfo ? (
               <div className="flex items-center gap-x-2 cursor-pointer p-1 w-full">
                 <img
+                  referrerPolicy="no-referrer"
                   className="w-8 h-8 rounded-sm"
                   src={`${
                     !!userInfo.picture

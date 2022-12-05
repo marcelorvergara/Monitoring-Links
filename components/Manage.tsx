@@ -115,9 +115,9 @@ export default function Manage(props: IManageProps) {
   }
 
   return (
-    <main className="flex justify-center mt-2 text-xs">
-      <div className="w-full sm:w-6/12">
-        <div className="text-center text-lg font-bold">Manage URL</div>
+    <main className="flex flex-wrap justify-center mt-2 text-xs">
+      <div className="text-center text-lg font-bold w-full">Manage URL</div>
+      <div className="w-full sm:w-6/12 text-center">
         <div className="w-full md:w-11/12 md:px-8 px-6">
           <table className="table w-full">
             <tbody>
@@ -126,19 +126,6 @@ export default function Manage(props: IManageProps) {
                   <td>
                     <div className="flex w-full items-center justify-center">
                       <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
-                    </div>
-                  </td>
-                </tr>
-              ) : !urlStatus.length ? (
-                <tr className="border-2 border-gray-400">
-                  <td>
-                    <div className="p-6 text-2xl">
-                      Go to{" "}
-                      <img
-                        src="/static/images/newmonitor.svg"
-                        alt="New monitor"
-                      />{" "}
-                      to register your first Monitoring Link!
                     </div>
                   </td>
                 </tr>

@@ -146,16 +146,9 @@ export default function Statistics(props: IStatisticsProps) {
         <div className="flex w-full items-center justify-center">
           <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
         </div>
-      ) : !lastHourStatistics.length ? (
-        <div className="border-2 border-gray-400 m-5">
-          <div className="p-6 text-2xl">
-            Go to <img src="/static/images/newmonitor.svg" alt="New monitor" />{" "}
-            to register your first Monitoring Link!
-          </div>
-        </div>
       ) : (
         lastHourStatistics.map((item: IChart, idx: number) => (
-          <div key={idx} className="w-11/12 sm:w-3/12 ml-4">
+          <div key={idx} className="w-11/12 sm:w-5/12 ml-4">
             <Line options={options} data={item} updateMode={"resize"} />
           </div>
         ))
