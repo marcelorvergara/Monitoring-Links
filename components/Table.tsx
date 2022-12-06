@@ -25,7 +25,6 @@ export default function Table(props: ITableProps) {
         throw new Error("Failed to get URLs");
       })
       .then((responseJson) => {
-        console.log(responseJson);
         setUrlStatistics(responseJson);
       })
       .catch((error) => {

@@ -312,10 +312,7 @@ const Home: NextPage = () => {
           )}
         </ul>
       </div>
-      <div
-        className={`${
-          !open ? "grow" : ""
-        }text-2xl font-semibold flex-1 h-screen bg-slate-200`}>
+      <div className="text-2xl font-semibold flex-1 h-screen bg-slate-200">
         {switchComonent()}
       </div>
     </div>
