@@ -14,9 +14,9 @@ export default function ConfirmDialog(props: IConfirmDialogProps) {
   }
   return (
     <BasicDialog open={open} onClose={onClose}>
-      <h2 className="text-lg text-left">{title}</h2>
-      <div className="py-2">{children}</div>
-      <div className="flex justify-end">
+      <h2 className="text-sm text-left my-4">{title}</h2>
+      <div>{children}</div>
+      <div className="flex justify-end mt-2">
         <div className="p-1">
           <DialogButton
             onClick={() => onClose()}
