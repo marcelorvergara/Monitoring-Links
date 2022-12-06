@@ -138,7 +138,7 @@ export default function Statistics(props: IStatisticsProps) {
   }, [props.open]);
 
   return (
-    <main className="flex flex-wrap items-center justify-center w-full gap-1 mt-2">
+    <main className="flex flex-wrap items-center justify-center w-full gap-1 mt-2 pr-1 h-64">
       <div className="text-center text-lg font-bold w-full">
         Statistical Graphics
       </div>
@@ -149,8 +149,8 @@ export default function Statistics(props: IStatisticsProps) {
       ) : (
         lastHourStatistics.map((item: IChart, idx: number) => (
           <Line
+            className="ml-4 w-11/12"
             key={idx}
-            className="w-11/12 sm:w-5/12 ml-4"
             options={options}
             data={item}
             updateMode={"resize"}

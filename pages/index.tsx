@@ -53,6 +53,7 @@ const Home: NextPage = () => {
       })
       .catch((error) => {
         setUserInfo(undefined);
+        console.clear();
       });
   }, []);
 
