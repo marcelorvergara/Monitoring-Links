@@ -43,7 +43,7 @@ export default function Table(props: ITableProps) {
             <thead>
               <tr className="flex-1 min-w-full text-sm text-left">
                 <th className="align-top">URL</th>
-                <th className="align-top">AVG</th>
+                <th className="align-top text-right">AVG</th>
               </tr>
             </thead>
             <tbody>
@@ -77,8 +77,8 @@ export default function Table(props: ITableProps) {
                         ? "bg-green-100"
                         : item.avg > item.warning_th &&
                           item.avg < item.danger_th
-                        ? "bg-yellow-200"
-                        : "bg-red-200"
+                        ? "bg-yellow-100"
+                        : "bg-red-100"
                     }`}>
                     <td className="truncate align-top">
                       {item.url
@@ -86,12 +86,14 @@ export default function Table(props: ITableProps) {
                         .replace("https://", "")
                         .replace("http://", "")}
                     </td>
-                    <td className="grid grid-rows-2 text-left">
+                    <td className="grid grid-rows-2 text-right">
                       <div>
                         <span>{parseFloat(item.avg).toFixed(2)}s.</span>
                       </div>
                       <div className="text-xs">
-                        Min. <span>{item.min}s.</span> - Max.
+                        Min. <span>{item.min}s.</span>
+                        <br />
+                        Max.
                         <span>{item.max}s.</span>
                       </div>
                     </td>

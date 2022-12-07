@@ -64,11 +64,10 @@ export default function LatestResults(props: ILatestResultsProps) {
                   key={i}
                   className={`border-2 border-gray-400 ${
                     item.load_time < item.warning_th
-                      ? "bg-green-100"
-                      : item.load_time > item.warning_th &&
-                        item.load_time < item.danger_th
-                      ? "bg-yellow-200"
-                      : "bg-red-200"
+                      ? "bg-green-200"
+                      : item.load_time > item.danger_th
+                      ? "bg-red-100"
+                      : "bg-yellow-100"
                   }`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
@@ -77,7 +76,9 @@ export default function LatestResults(props: ILatestResultsProps) {
                       <br />
                       <span
                         className={`${
-                          parseInt(item.status) > 399 ? "bg-red-400" : ""
+                          parseInt(item.status) > 399
+                            ? "bg-red-400 px-1 py-0.5 rounded-sm"
+                            : ""
                         }`}>
                         Status code: {item.status}
                       </span>
