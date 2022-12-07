@@ -156,6 +156,7 @@ const Home: NextPage = () => {
             switchComonent={switchComonent}
             setComponent={setComponent}
             setTotUrls={setTotUrls}
+            open={open}
           />
         );
       case "HowTo":

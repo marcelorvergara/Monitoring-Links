@@ -15,6 +15,7 @@ interface IManageProps {
   switchComonent: () => void;
   setComponent: React.Dispatch<SetStateAction<string>>;
   setTotUrls: React.Dispatch<SetStateAction<number>>;
+  open: boolean;
 }
 
 // threshold options
@@ -176,9 +177,12 @@ export default function Manage(props: IManageProps) {
           </ConfirmDialog>
         </div>
         {updateUrl ? (
-          <div className="w-full md:w-11/12 md:px-8 px-2 mt-6">
-            <div className="text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm w-full font-body tracking-wider truncate">
-              {updateUrl.url}
+          <div className="md:w-11/12 md:px-8 px-2 mt-6">
+            <div
+              className={`${
+                props.open ? " w-[202px]" : " w-[260px]"
+              } text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm font-body tracking-wider sm:w-full mx-auto`}>
+              <span className="truncate block">{updateUrl.url}</span>
             </div>
             <div className="flex gap-7 mt-2">
               <div>

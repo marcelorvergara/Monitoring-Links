@@ -115,13 +115,13 @@ export default function Statistics(props: IStatisticsProps) {
                 backgroundColor: "rgb(85, 85, 85, 0.4)",
               },
               {
-                label: "Warning TH",
+                label: "Warning",
                 data: Array(el.load_time.length).fill(result[idx].warning_th),
                 borderColor: "rgb(251, 191, 36)",
                 backgroundColor: "rgb(251, 191, 36, 0.4)",
               },
               {
-                label: "Danger TH",
+                label: "Danger",
                 data: Array(el.load_time.length).fill(result[idx].danger_th),
                 borderColor: "rgb(239, 68, 68)",
                 backgroundColor: "rgb(239, 68, 68, 0.4)",
