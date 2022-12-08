@@ -30,6 +30,12 @@ export interface ISession {
   photos?: any; // google
 }
 
+const Timeout = (time: number) => {
+  let controller = new AbortController();
+  setTimeout(() => controller.abort(), time * 1000);
+  return controller;
+};
+
 const Home: NextPage = () => {
   const [userInfo, setUserInfo] = useState<ISession | undefined>();
   const [totUrls, setTotUrls] = useState<number>(0);
@@ -42,6 +48,7 @@ const Home: NextPage = () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Credentials": "true",
       },
+      signal: Timeout(5).signal,
     })
       .then((response) => {
         if (response.status === 200) return response.json();
@@ -51,9 +58,8 @@ const Home: NextPage = () => {
         setTotUrls(responseJson.totUrls);
         setUserInfo(responseJson.user);
       })
-      .catch((error) => {
+      .catch(() => {
         setUserInfo(undefined);
-        console.clear();
       });
   }, []);
 
