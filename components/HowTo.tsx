@@ -7,7 +7,7 @@ export default function HowTo() {
         <div className="text-center text-lg font-bold">
           How To use Monitoring Links
         </div>
-        <div className="flex items-center gap-2 mt-6 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 mt-6 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/login.svg"
             alt="login button"
@@ -15,7 +15,7 @@ export default function HowTo() {
           />
           <span>Login with facebook or google account</span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/newmonitor.svg"
             alt="login button"
@@ -23,7 +23,7 @@ export default function HowTo() {
           />
           <span>Configure a URL to monitor</span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/latestresults.svg"
             alt="login button"
@@ -33,7 +33,7 @@ export default function HowTo() {
             Check results of the URL(s) that you have already configured
           </span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/table.svg"
             alt="login button"
@@ -41,7 +41,7 @@ export default function HowTo() {
           />
           <span>Statistics information about all-time monitoring results</span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/statistics.svg"
             alt="login button"
@@ -51,7 +51,7 @@ export default function HowTo() {
             Visual information about last six hours monitoring results
           </span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/manage.svg"
             alt="login button"
@@ -59,7 +59,7 @@ export default function HowTo() {
           />
           <span>Manage URL(s) already registered</span>
         </div>
-        <div className="flex items-center gap-2 font-body bg-gray-400 px-2 py-2.5 rounded text-white text-xs sm:text-md">
+        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
             src="/static/images/logout.svg"
             alt="login button"

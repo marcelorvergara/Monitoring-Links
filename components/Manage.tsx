@@ -135,7 +135,11 @@ export default function Manage(props: IManageProps) {
                 </tr>
               ) : (
                 urlStatus.map((item: IURLsStatus, i: number) => (
-                  <tr key={i}>
+                  <tr
+                    key={i}
+                    className={`${
+                      i % 2 === 0 ? "bg-gray-200" : "bg-gray-300"
+                    }`}>
                     <td className="border-2 border-gray-400 py-2 px-1.5 text-left">
                       <span>
                         {item.url
