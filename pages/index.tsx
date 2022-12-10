@@ -8,7 +8,6 @@ import Logout from "../components/Logout";
 import MainDefault from "../components/MainDefault";
 import Manage from "../components/Manage";
 import Statistics from "../components/Statistics";
-import Table from "../components/Table";
 
 export interface Data {
   height: number;
@@ -99,12 +98,6 @@ const Home: NextPage = () => {
       gap: false,
     },
     {
-      title: "Table",
-      src: "/static/images/table.svg",
-      path: "/",
-      gap: false,
-    },
-    {
       title: "Statistics",
       src: "/static/images/statistics.svg",
       path: "/",
@@ -162,14 +155,6 @@ const Home: NextPage = () => {
         return <HowTo />;
       case "Logout":
         return <Logout />;
-      case "Table":
-        return (
-          <Table
-            userInfo={userInfo!}
-            switchComonent={switchComonent}
-            setComponent={setComponent}
-          />
-        );
       case "Statistics":
         return (
           <Statistics

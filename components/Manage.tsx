@@ -1,3 +1,4 @@
+import { spawn } from "child_process";
 import { SetStateAction, useEffect, useState } from "react";
 import {
   deleteUrlHelper,
@@ -120,9 +121,11 @@ export default function Manage(props: IManageProps) {
 
   return (
     <main className="flex flex-wrap justify-center mt-2 text-xs">
-      <div className="text-center text-lg font-bold w-full">Manage URL</div>
+      <div className="text-center text-lg font-bold w-full mx-auto">
+        Manage URL
+      </div>
       <div className="w-full sm:w-6/12 text-center">
-        <div className="w-full md:w-11/12 md:px-8 px-6">
+        <div className="w-full mx-auto md:w-11/12 md:px-8 px-6">
           <table className="table w-full">
             <tbody>
               {isLoading ? (
@@ -130,6 +133,14 @@ export default function Manage(props: IManageProps) {
                   <td>
                     <div className="flex w-full items-center justify-center">
                       <div className="w-16 h-16 mt-12 border-4 border-dashed border-slate-600 rounded-full animate-spin dark:border-blue-700"></div>
+                    </div>
+                  </td>
+                </tr>
+              ) : urlStatus.length === 0 ? (
+                <tr>
+                  <td>
+                    <div className="flex w-full items-center justify-center font-body">
+                      You are not monitoring any URL
                     </div>
                   </td>
                 </tr>

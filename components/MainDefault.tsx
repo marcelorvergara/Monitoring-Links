@@ -1,5 +1,6 @@
 import { userInfo } from "os";
 import { ISession } from "../pages";
+import Table from "./Table";
 
 interface IMainDefaultProps {
   userInfo?: ISession;
@@ -8,7 +9,7 @@ interface IMainDefaultProps {
 export default function MainDefault(props: IMainDefaultProps) {
   console.log(props);
   return (
-    <main className="flex flex-col items-center justify-center px-6 text-center mt-4">
+    <main className="flex flex-col items-center justify-center text-center mt-4">
       <h1 className="text-xl sm:text-2xl font-bold text-slate-600">
         Welcome to <br />
         <span className="text-slate-800">Monitoring Links</span>
@@ -35,21 +36,24 @@ export default function MainDefault(props: IMainDefaultProps) {
           </div>
         </>
       ) : (
-        <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
-          <div className="m-2 basis-11/12 p-2 text-center font-body transition-colors duration-150 ease-in">
-            <h3 className="text-md text-sm mb-2">
-              Hello{" "}
-              {`${
-                !!props.userInfo.displayName
-                  ? props.userInfo.displayName
-                  : props.userInfo.name
-              }`}
-              . You have {props.totUrls} links being monitored.
-            </h3>
+        <>
+          <div className="flex flex-wrap items-center justify-center mt-1 min-w-full">
+            <div className="m-2 basis-11/12 p-2 text-center font-body transition-colors duration-150 ease-in">
+              <h3 className="text-md text-sm mb-2">
+                Hello{" "}
+                {`${
+                  !!props.userInfo.displayName
+                    ? props.userInfo.displayName
+                    : props.userInfo.name
+                }`}
+                . You have {props.totUrls} links being monitored.
+              </h3>
+            </div>
           </div>
-        </div>
+          <Table userInfo={props.userInfo!} />
+        </>
       )}
-      <div className="flex flex-wrap items-center justify-center mt-3 min-w-full">
+      <div className="flex flex-wrap items-center justify-center mt-3 w-full">
         <div className="m-2 basis-11/12 p-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in">
           <h3 className="text-md text-sm mb-2">Documentation</h3>
           <p className="flex items-start gap-2 text-xs">
