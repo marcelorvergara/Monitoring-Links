@@ -40,6 +40,7 @@ export default function Manage(props: IManageProps) {
   const [feedback, setFeedback] = useState<IFeedback>({});
   const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
   const [itemToDelete, setItemToDelete] = useState<IURLsStatus>();
+  const [whatsapp, setWhatsapp] = useState<string>("");
 
   useEffect(() => {
     getUserUrls(props.userInfo.id)
@@ -119,6 +120,10 @@ export default function Manage(props: IManageProps) {
       });
   }
 
+  function handleWhatsappValue(event: React.FormEvent<HTMLInputElement>) {
+    setWhatsapp(event.currentTarget.value);
+  }
+
   return (
     <main className="flex flex-wrap justify-center mt-2 text-xs">
       <div className="text-center text-lg font-bold w-full mx-auto">
@@ -171,7 +176,7 @@ export default function Manage(props: IManageProps) {
                         <button
                           onClick={() => updateThreshold(item)}
                           className="mt-2 text-xs bg-yellow-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
-                          Update Thresholds
+                          Update
                         </button>
                       </div>
                     </td>
@@ -192,7 +197,7 @@ export default function Manage(props: IManageProps) {
           </ConfirmDialog>
         </div>
         {updateUrl ? (
-          <div className="md:w-11/12 md:px-8 px-2 mt-6">
+          <div className="md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
             <div
               className={`${
                 props.open ? " w-[202px]" : " w-[260px]"
@@ -239,6 +244,19 @@ export default function Manage(props: IManageProps) {
                 </select>
               </div>
             </div>
+            <label
+              className="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold text-left"
+              htmlFor="urlText">
+              Whatsapp Alert
+            </label>
+            <input
+              onChange={handleWhatsappValue}
+              value={whatsapp}
+              className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="urlText"
+              type="text"
+              placeholder="552198899559"
+            />
             <button
               onClick={updateUrlBE}
               className="mt-4 w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">

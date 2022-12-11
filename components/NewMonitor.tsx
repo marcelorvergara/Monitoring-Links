@@ -29,6 +29,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [dangerTh, setDangerTh] = useState<string>("-1");
   const [feedback, setFeedback] = useState<IFeedback>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [whatsapp, setWhatsapp] = useState<string>("");
 
   // check if logged in
   useEffect(() => {
@@ -42,6 +43,10 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   function handleUrlValue(event: React.FormEvent<HTMLInputElement>) {
     setUrl(event.currentTarget.value);
+  }
+
+  function handleWhatsappValue(event: React.FormEvent<HTMLInputElement>) {
+    setWhatsapp(event.currentTarget.value);
   }
 
   async function registerUrl(event: React.MouseEvent<HTMLButtonElement>) {
@@ -65,7 +70,8 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
         protocol + url,
         props.userInfo.id,
         warningTh,
-        dangerTh
+        dangerTh,
+        whatsapp
       );
       const respJson = await resp.json();
       if (resp.status === 201) {
@@ -176,6 +182,19 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
               </select>
             </div>
           </div>
+          <label
+            className="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold"
+            htmlFor="urlText">
+            Whatsapp Alert
+          </label>
+          <input
+            onChange={handleWhatsappValue}
+            value={whatsapp}
+            className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="urlText"
+            type="text"
+            placeholder="552198899559"
+          />
         </div>
         <div className="text-sm mt-5 md:w-full md:px-8 m-4 flex justify-end">
           <button
