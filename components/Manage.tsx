@@ -77,7 +77,7 @@ export default function Manage(props: IManageProps) {
       });
   }
 
-  function updateThreshold(item: IURLsStatus) {
+  function updateThresholdAndZap(item: IURLsStatus) {
     setFeedback({});
     if (item === updateUrl) {
       setUpdateUrl(null);
@@ -86,6 +86,7 @@ export default function Manage(props: IManageProps) {
     setWarningTh(item.warning_th);
     setDangerTh(item.danger_th);
     setUpdateUrl(item);
+    setWhatsapp(item.whatsapp ?? "");
   }
 
   function updateUrlBE() {
@@ -175,7 +176,7 @@ export default function Manage(props: IManageProps) {
                           Delete
                         </button>
                         <button
-                          onClick={() => updateThreshold(item)}
+                          onClick={() => updateThresholdAndZap(item)}
                           className="mt-2 text-xs bg-yellow-400 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
                           Update
                         </button>
@@ -266,7 +267,9 @@ export default function Manage(props: IManageProps) {
           </div>
         ) : null}
         {feedback.error ? (
-          <div role="alert" className="w-full md:w-11/12 md:px-8 px-2 mt-6">
+          <div
+            role="alert"
+            className="w-full md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
             <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
               Registration not completed
             </div>
@@ -276,7 +279,9 @@ export default function Manage(props: IManageProps) {
           </div>
         ) : (
           !!feedback.url && (
-            <div role="alert" className="w-full md:w-11/12 md:px-8 px-2 mt-6">
+            <div
+              role="alert"
+              className="w-full md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
               <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
                 Success
               </div>
