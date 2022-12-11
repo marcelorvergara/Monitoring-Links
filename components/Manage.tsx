@@ -102,6 +102,7 @@ export default function Manage(props: IManageProps) {
       url_id: updateUrl?.url_id,
       warning_th: warningTh,
       danger_th: dangerTh,
+      whatsapp: whatsapp,
     })
       .then((response) => {
         if (response.status === 202) return response.json();

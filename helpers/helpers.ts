@@ -73,6 +73,7 @@ export async function updateUrlHelper(url: {
   url_id: number | undefined;
   warning_th: string;
   danger_th: string;
+  whatsapp: string;
 }) {
   return fetch(`${process.env.NEXT_PUBLIC_BACKEND_SRV}/urls`, {
     method: "PUT",
