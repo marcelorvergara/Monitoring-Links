@@ -28,8 +28,8 @@ export default function Table(props: ITableProps) {
 
   return (
     <main className="flex flex-wrap justify-center text-sm">
-      <div className="w-full pl-2">
-        <div className="w-full mx-auto md:w-11/12 md:px-8 pr-1">
+      <div className="w-full pl-2 pr-1">
+        <div className="w-full mx-auto md:w-11/12">
           <table className="table-fixed w-full ">
             <thead>
               <tr className="flex-1 min-w-full text-sm text-left">

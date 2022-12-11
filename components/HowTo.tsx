@@ -35,14 +35,6 @@ export default function HowTo() {
         </div>
         <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
           <img
-            src="/static/images/table.svg"
-            alt="login button"
-            className="w-10 h-10"
-          />
-          <span>Statistics information about all-time monitoring results</span>
-        </div>
-        <div className="flex items-center gap-2 font-body bg-gray-600 px-2 py-2.5 rounded text-white text-xs sm:text-md">
-          <img
             src="/static/images/statistics.svg"
             alt="login button"
             className="w-10 h-10"

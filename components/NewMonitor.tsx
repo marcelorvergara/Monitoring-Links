@@ -131,7 +131,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
           <input
             onChange={handleUrlValue}
             value={url}
-            className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className="mt-2 appearance-none block text-xs w-full text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="urlText"
             type="text"
             placeholder="www.google.com"
@@ -148,7 +148,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
                 defaultValue={"-1"}
                 name="warningThreshold"
                 id="warningThreshold"
-                className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-yellow-400 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                className="mt-2 appearance-none block text-xs w-full text-gray-700 border border-yellow-400 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option value="-1" disabled>
                   Select
                 </option>
@@ -170,7 +170,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
                 defaultValue={"-1"}
                 name="dangerThreshold"
                 id="dangerThreshold"
-                className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-red-300 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                className="mt-2 appearance-none block text-xs w-full text-gray-700 border border-red-300 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 <option value="-1" disabled>
                   Select
                 </option>
@@ -190,16 +190,16 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
           <input
             onChange={handleWhatsappValue}
             value={whatsapp}
-            className="mt-2 appearance-none block text-xs w-full bg-gray-100 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className="mt-2 appearance-none block text-xs w-full text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="urlText"
-            type="text"
+            type="number"
             placeholder="552198899559"
           />
         </div>
         <div className="text-sm mt-5 md:w-full md:px-8 m-4 flex justify-end">
           <button
             onClick={registerUrl}
-            className="w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
+            className="w-full bg-blue-600 text-white hover:bg-blue-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
             Register
           </button>
         </div>

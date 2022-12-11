@@ -206,7 +206,7 @@ export default function Manage(props: IManageProps) {
               } text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm font-body tracking-wider sm:w-full mx-auto`}>
               <span className="truncate block">{updateUrl.url}</span>
             </div>
-            <div className="flex gap-7 mt-2">
+            <div className="flex gap-7 mt-4">
               <div>
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
@@ -261,15 +261,13 @@ export default function Manage(props: IManageProps) {
             />
             <button
               onClick={updateUrlBE}
-              className="mt-4 w-full bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
+              className="text-sm mt-4 w-full bg-blue-600 text-white hover:bg-blue-800 font-semibold py-1 px-2.5 border border-gray-400 rounded shadow">
               Update
             </button>
           </div>
         ) : null}
         {feedback.error ? (
-          <div
-            role="alert"
-            className="w-full md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
+          <div role="alert" className="w-full md:w-11/12 md:px-8 px-2 mt-6">
             <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
               Registration not completed
             </div>
