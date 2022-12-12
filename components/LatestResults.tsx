@@ -45,7 +45,7 @@ export default function LatestResults(props: ILatestResultsProps) {
                 Lastest <br /> Checks
               </th>
               <th className="text-end">
-                Loading <br /> Time
+                Response <br /> Time
               </th>
             </tr>
           </thead>

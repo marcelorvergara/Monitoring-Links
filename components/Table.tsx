@@ -34,7 +34,7 @@ export default function Table(props: ITableProps) {
             <thead>
               <tr className="flex-1 min-w-full text-sm text-center">
                 <th className="align-top" colSpan={2}>
-                  {urlStatistics.length > 0 ? "Average time to load page" : ""}
+                  {urlStatistics.length > 0 ? "Average Response Time" : ""}
                 </th>
               </tr>
             </thead>
