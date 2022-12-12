@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function HowTo() {
   return (
     <div className="flex justify-center bg-slate-200 p-4 h-screen">

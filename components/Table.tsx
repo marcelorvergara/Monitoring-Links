@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { geStatistics } from "../helpers/helpers";
 import { IURLsStatistics } from "../interfaces/IURLsStatistics";
 import { ISession } from "../pages";
