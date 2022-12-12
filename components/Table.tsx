@@ -29,15 +29,12 @@ export default function Table(props: ITableProps) {
   return (
     <main className="flex flex-wrap justify-center text-sm">
       <div className="w-full pl-2 pr-1">
-        <div className="w-full mx-auto md:w-11/12">
+        <div className="w-full mx-auto sm:w-11/12">
           <table className="table-fixed w-full ">
             <thead>
-              <tr className="flex-1 min-w-full text-sm text-left">
-                <th className="align-top">
-                  {urlStatistics.length > 0 ? "URL" : ""}
-                </th>
-                <th className="align-top text-right">
-                  {urlStatistics.length > 0 ? "AVG" : ""}
+              <tr className="flex-1 min-w-full text-sm text-center">
+                <th className="align-top" colSpan={2}>
+                  {urlStatistics.length > 0 ? "Average time to load page" : ""}
                 </th>
               </tr>
             </thead>

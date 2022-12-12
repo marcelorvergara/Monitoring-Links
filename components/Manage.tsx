@@ -199,17 +199,17 @@ export default function Manage(props: IManageProps) {
           </ConfirmDialog>
         </div>
         {updateUrl ? (
-          <div className="md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
+          <div className="md:w-11/12 md:px-8 px-2 mt-2 mx-auto">
             <div
               className={`${
                 props.open ? " w-[202px]" : " w-[260px]"
               } text-lg bg-gray-300 text-center px-1.5 py-2 rounded-sm font-body tracking-wider sm:w-full mx-auto`}>
               <span className="truncate block">{updateUrl.url}</span>
             </div>
-            <div className="flex gap-7 mt-4">
+            <div className="flex gap-7 mt-2">
               <div>
                 <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-left"
                   htmlFor="warningThreshold">
                   Warning Threshold
                 </label>
@@ -228,7 +228,7 @@ export default function Manage(props: IManageProps) {
               </div>
               <div>
                 <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold text-left"
                   htmlFor="dangerThreshold">
                   Danger Threshold
                 </label>
@@ -267,7 +267,7 @@ export default function Manage(props: IManageProps) {
           </div>
         ) : null}
         {feedback.error ? (
-          <div role="alert" className="w-full md:w-11/12 md:px-8 px-2 mt-6">
+          <div role="alert" className="w-full md:w-11/12 md:px-8 px-2 mt-2">
             <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
               Registration not completed
             </div>
@@ -279,7 +279,7 @@ export default function Manage(props: IManageProps) {
           !!feedback.url && (
             <div
               role="alert"
-              className="w-full md:w-11/12 md:px-8 px-2 mt-6 mx-auto">
+              className="w-full md:w-11/12 md:px-8 px-2 mt-2 mx-auto">
               <div className="bg-green-500 text-white font-bold rounded-t px-4 py-2">
                 Success
               </div>

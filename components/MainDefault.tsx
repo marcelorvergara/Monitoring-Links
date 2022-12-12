@@ -14,7 +14,7 @@ export default function MainDefault(props: IMainDefaultProps) {
       </h1>
       {!props.userInfo ? (
         <>
-          <h2 className="text-sm mt-4 mb-2 font-body">
+          <h2 className="text-sm mt-4 mb-2 font-body mx-2">
             Check out this! Here you can monitor your website with just a few
             clicks. Try it now and you even can benchmark with other sites how
             is your service performing.
@@ -53,7 +53,7 @@ export default function MainDefault(props: IMainDefaultProps) {
           <Table userInfo={props.userInfo!} />
         </>
       )}
-      <div className="p-2 ml-2 mr-1 mt-4 sm:mx-5 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+      <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
         <h3 className="text-md text-sm mb-2">Documentation</h3>
         <p className="flex items-start gap-2 text-xs">
           <img
