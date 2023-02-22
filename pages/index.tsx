@@ -211,7 +211,7 @@ const Home: NextPage = () => {
                   className="w-8 h-8 rounded-sm"
                   src={`${
                     !!userInfo.picture
-                      ? userInfo.picture.data.url
+                      ? "https://graph.facebook.com/" + userInfo.id + "/picture"
                       : !!userInfo.photos[0]
                       ? userInfo.photos[0].value
                       : "/static/images/login.svg"
