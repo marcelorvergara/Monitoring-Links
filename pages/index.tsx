@@ -209,6 +209,7 @@ const Home: NextPage = () => {
                 <img
                   referrerPolicy="no-referrer"
                   className="w-8 h-8 rounded-sm"
+                  // facebook bug --> https://github.com/napoliblockchain/bolt/issues/42
                   src={`${
                     !!userInfo.picture
                       ? "https://graph.facebook.com/" + userInfo.id + "/picture"
