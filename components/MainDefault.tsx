@@ -15,9 +15,9 @@ export default function MainDefault(props: IMainDefaultProps) {
       {!props.userInfo ? (
         <>
           <h2 className="text-sm mt-4 mb-2 font-body mx-2">
-            Check out this! Here you can monitor your website with just a few
-            clicks. Try it now and you even can benchmark with other sites how
-            is your service performing.
+            Discover how you can monitor your website's performance with just a
+            few clicks. Try it now and compare your site's performance with
+            others in your industry.
           </h2>
           <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
             <h3 className="text-md text-sm mb-2">Login</h3>
