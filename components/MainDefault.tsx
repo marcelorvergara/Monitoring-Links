@@ -61,8 +61,11 @@ export default function MainDefault(props: IMainDefaultProps) {
             src="/static/images/howto.svg"
             alt="how to use Monitoring Links"
           />
-          After login, find information about how to use Monitoring Links
-          clicking in the question mark in the side menu
+          <p>
+            After logging in, access information on how to use{" "}
+            <span className="font-semibold">Monitoring Links</span> by clicking
+            the question mark icon in the side menu.
+          </p>
         </p>
       </div>
     </main>
