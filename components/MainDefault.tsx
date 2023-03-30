@@ -55,7 +55,7 @@ export default function MainDefault(props: IMainDefaultProps) {
       )}
       <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
         <h3 className="text-md text-sm mb-2">Documentation</h3>
-        <p className="flex items-start gap-2 text-xs">
+        <div className="flex items-start gap-2 text-xs">
           <img
             className="bg-gray-400 p-1 rounded h-12 w-12"
             src="/static/images/howto.svg"
@@ -66,7 +66,7 @@ export default function MainDefault(props: IMainDefaultProps) {
             <span className="font-semibold">Monitoring Links</span> by clicking
             the question mark icon in the side menu.
           </p>
-        </p>
+        </div>
       </div>
     </main>
   );
