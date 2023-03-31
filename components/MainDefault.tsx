@@ -5,6 +5,7 @@ interface IMainDefaultProps {
   userInfo?: ISession;
   totUrls?: number;
 }
+
 export default function MainDefault(props: IMainDefaultProps) {
   return (
     <main className="flex flex-col items-center justify-center text-center mt-4">
