@@ -66,13 +66,14 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
       return;
     }
     setIsLoading(true);
+    const phoneNumber = smsWhatsapp !== "" ? `+${smsWhatsapp}` : "";
     try {
       const resp = await setUrlMonitor(
         protocol + url,
         props.userInfo.id,
         warningTh,
         dangerTh,
-        alertType + smsWhatsapp
+        alertType + phoneNumber
       );
       const respJson = await resp.json();
       if (resp.status === 201) {

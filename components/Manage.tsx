@@ -85,14 +85,18 @@ export default function Manage(props: IManageProps) {
     setWarningTh(item.warning_th);
     setDangerTh(item.danger_th);
     setUpdateUrl(item);
+    // phone number
     setSmsWhatsapp(
       item.sms_whatsapp === undefined
         ? ""
-        : item.sms_whatsapp.replace("whatsapp:", "")
+        : item.sms_whatsapp.replace("whatsapp:+", "")
     );
-    smsWhatsapp.startsWith("whatsapp:")
-      ? setAlertType("whatsapp:")
-      : setAlertType("");
+    // alert type
+    if (item.sms_whatsapp && item.sms_whatsapp.startsWith("whatsapp:")) {
+      setAlertType("whatsapp:");
+    } else {
+      setAlertType("");
+    }
   }
 
   function updateUrlBE() {
@@ -104,12 +108,13 @@ export default function Manage(props: IManageProps) {
       return;
     }
     setIsLoading(true);
+    const phoneNumber = smsWhatsapp !== "" ? `+${smsWhatsapp}` : "";
     updateUrlHelper({
       user_id: updateUrl?.user_id,
       url_id: updateUrl?.url_id,
       warning_th: warningTh,
       danger_th: dangerTh,
-      sms_whatsapp: alertType + smsWhatsapp,
+      sms_whatsapp: alertType + phoneNumber,
     })
       .then((response) => {
         if (response.status === 202) return response.json();
