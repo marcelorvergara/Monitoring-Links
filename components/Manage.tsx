@@ -259,7 +259,7 @@ export default function Manage(props: IManageProps) {
             </div>
             <div className="flex flex-wrap gap-4 items-center justify-start text-sm mt-4 md:w-full">
               <label className="uppercase tracking-wide text-gray-700 font-bold text-xs">
-                Alert Type
+                Alert
               </label>
               <div className="flex items-center gap-2">
                 <input
