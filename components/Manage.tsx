@@ -68,7 +68,8 @@ export default function Manage(props: IManageProps) {
         if (response.status === 200) return response.json();
         throw new Error("Failed to delete URL");
       })
-      .then((responseJson) => {
+      .then(() => {
+        setUpdateUrl(null);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -139,7 +140,6 @@ export default function Manage(props: IManageProps) {
 
   function onAlertTypeChange(event: React.ChangeEvent<HTMLInputElement>) {
     setAlertType(event.currentTarget.value);
-    console.log(alertType);
   }
 
   return (
