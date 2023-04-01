@@ -3,7 +3,7 @@ export async function setUrlMonitor(
   id: string,
   warning_th: string,
   danger_th: string,
-  whatsapp: string
+  sms_whatsapp: string
 ) {
   return fetch(`${process.env.NEXT_PUBLIC_BACKEND_SRV}/urls`, {
     method: "POST",
@@ -13,7 +13,13 @@ export async function setUrlMonitor(
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": "true",
     },
-    body: JSON.stringify({ url, user_id: id, warning_th, danger_th, whatsapp }),
+    body: JSON.stringify({
+      url,
+      user_id: id,
+      warning_th,
+      danger_th,
+      sms_whatsapp,
+    }),
   });
 }
 
@@ -73,7 +79,7 @@ export async function updateUrlHelper(url: {
   url_id: number | undefined;
   warning_th: string;
   danger_th: string;
-  whatsapp: string;
+  sms_whatsapp: string;
 }) {
   return fetch(`${process.env.NEXT_PUBLIC_BACKEND_SRV}/urls`, {
     method: "PUT",

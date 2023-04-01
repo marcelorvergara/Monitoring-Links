@@ -29,7 +29,8 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
   const [dangerTh, setDangerTh] = useState<string>("-1");
   const [feedback, setFeedback] = useState<IFeedback>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [whatsapp, setWhatsapp] = useState<string>("");
+  const [smsWhatsapp, setSmsWhatsapp] = useState<string>("");
+  const [alertType, setAlertType] = useState<string>("");
 
   // check if logged in
   useEffect(() => {
@@ -45,8 +46,8 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
     setUrl(event.currentTarget.value);
   }
 
-  function handleWhatsappValue(event: React.FormEvent<HTMLInputElement>) {
-    setWhatsapp(event.currentTarget.value);
+  function handleSmsWhatsappValue(event: React.FormEvent<HTMLInputElement>) {
+    setSmsWhatsapp(event.currentTarget.value);
   }
 
   async function registerUrl(event: React.MouseEvent<HTMLButtonElement>) {
@@ -71,7 +72,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
         props.userInfo.id,
         warningTh,
         dangerTh,
-        whatsapp
+        alertType + smsWhatsapp
       );
       const respJson = await resp.json();
       if (resp.status === 201) {
@@ -89,6 +90,10 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
 
   function onProtocolChange(event: React.ChangeEvent<HTMLInputElement>) {
     setProtocol(event.currentTarget.value);
+  }
+
+  function onAlertTypeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setAlertType(event.currentTarget.value);
   }
 
   return (
@@ -182,14 +187,39 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
               </select>
             </div>
           </div>
+          <div className="flex flex-wrap gap-4 items-center justify-start text-sm mt-4 md:w-full">
+            <label className="uppercase tracking-wide text-gray-700 font-bold text-xs">
+              Alert Type
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                onChange={(e) => onAlertTypeChange(e)}
+                type="radio"
+                value=""
+                name=""
+                checked={alertType === ""}
+              />
+              SMS
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                onChange={(e) => onAlertTypeChange(e)}
+                type="radio"
+                value="whatsapp:"
+                name="whatsapp:"
+                checked={alertType === "whatsapp:"}
+              />
+              WHATSAPP (Alpha)
+            </div>
+          </div>
           <label
             className="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold"
             htmlFor="urlText">
-            Whatsapp Alert
+            Mobile Number
           </label>
           <input
-            onChange={handleWhatsappValue}
-            value={whatsapp}
+            onChange={handleSmsWhatsappValue}
+            value={smsWhatsapp}
             className="mt-2 appearance-none block text-xs w-full text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="urlText"
             type="number"

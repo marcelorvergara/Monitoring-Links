@@ -8,5 +8,5 @@ export interface IURLsStatus {
   created_at: string;
   warning_th: string;
   danger_th: string;
-  whatsapp?: string;
+  sms_whatsapp?: string;
 }
