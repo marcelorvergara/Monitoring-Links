@@ -78,6 +78,7 @@ export default function Manage(props: IManageProps) {
   }
 
   function updateThresholdAndAlert(item: IURLsStatus) {
+    console.log(item.sms_whatsapp);
     setFeedback({});
     if (item === updateUrl) {
       setUpdateUrl(null);
@@ -86,11 +87,11 @@ export default function Manage(props: IManageProps) {
     setWarningTh(item.warning_th);
     setDangerTh(item.danger_th);
     setUpdateUrl(item);
-    // phone number
+    // phone number remove prefix alert registred in db
     setSmsWhatsapp(
       item.sms_whatsapp === undefined
         ? ""
-        : item.sms_whatsapp.replace("whatsapp:+", "")
+        : item.sms_whatsapp.replace("whatsapp:+", "").replace("+", "")
     );
     // alert type
     if (item.sms_whatsapp && item.sms_whatsapp.startsWith("whatsapp:")) {
@@ -109,13 +110,16 @@ export default function Manage(props: IManageProps) {
       return;
     }
     setIsLoading(true);
+    // prefix phone number if whatsapp alert is selected
     const phoneNumber = smsWhatsapp !== "" ? `+${smsWhatsapp}` : "";
+    // validate if alert type is necessary when phone number is blank
+    const newAlertType = smsWhatsapp === "" ? "" : alertType;
     updateUrlHelper({
       user_id: updateUrl?.user_id,
       url_id: updateUrl?.url_id,
       warning_th: warningTh,
       danger_th: dangerTh,
-      sms_whatsapp: alertType + phoneNumber,
+      sms_whatsapp: newAlertType + phoneNumber,
     })
       .then((response) => {
         if (response.status === 202) return response.json();
