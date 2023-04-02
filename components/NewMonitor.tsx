@@ -210,7 +210,7 @@ export default function LinkMonitorData(props: ILinkMonitorDataProps) {
                 name="whatsapp:"
                 checked={alertType === "whatsapp:"}
               />
-              WHATSAPP (Alpha)
+              WHATSAPP
             </div>
           </div>
           <label

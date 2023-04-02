@@ -288,7 +288,7 @@ export default function Manage(props: IManageProps) {
                   name="whatsapp:"
                   checked={alertType === "whatsapp:"}
                 />
-                WHATSAPP (Alpha)
+                WHATSAPP
               </div>
             </div>
             <label
