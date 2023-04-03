@@ -78,7 +78,6 @@ export default function Manage(props: IManageProps) {
   }
 
   function updateThresholdAndAlert(item: IURLsStatus) {
-    console.log(item.sms_whatsapp);
     setFeedback({});
     if (item === updateUrl) {
       setUpdateUrl(null);

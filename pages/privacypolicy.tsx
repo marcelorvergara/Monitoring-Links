@@ -7,11 +7,6 @@ const PrivacyPolicy = () => {
       <Head>
         <title>Monitoring Links Privacy Policy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* Add your CSS or stylesheet link here */}
-        <link
-          href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-          rel="stylesheet"
-        />
       </Head>
 
       <main className="flex flex-col items-center justify-center text-center mt-4 px-4">

@@ -7,7 +7,6 @@ interface IBasicDialogProps {
   onClose: Function;
 }
 export default function BasicDialog(props: IBasicDialogProps) {
-  console.log("Basic Dialog");
   const { open, onClose } = props;
   if (!open) {
     return <></>;
