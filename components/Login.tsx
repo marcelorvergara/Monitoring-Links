@@ -93,6 +93,17 @@ export default function Login() {
                 </div>
               </td>
             </tr>
+            <tr>
+              <td className="flex items-start justify-center mt-2">
+                <div className="w-full sm:w-4/12">
+                  <Link href="/privacypolicy" target="_blank">
+                    <span className="text-blue-600 hover:text-blue-800">
+                      Privacy Policy
+                    </span>
+                  </Link>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
