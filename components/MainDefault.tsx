@@ -9,19 +9,19 @@ interface IMainDefaultProps {
 
 export default function MainDefault(props: IMainDefaultProps) {
   return (
-    <main className="flex flex-col items-center justify-center text-center mt-4">
+    <main className="flex flex-col items-center justify-center text-center mt-2">
       <h1 className="text-xl sm:text-2xl font-bold text-slate-600">
         Welcome to <br />
         <span className="text-slate-800">Monitoring Links</span>
       </h1>
       {!props.userInfo ? (
         <>
-          <h2 className="text-sm mt-4 mb-2 font-body mx-2">
+          <h2 className="text-sm mt-2 mb-2 font-body mx-2">
             Discover how you can monitor your website's performance with just a
             few clicks. Try it now and compare your site's performance with
             others in your industry.
           </h2>
-          <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+          <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
             <h3 className="text-md text-sm mb-2">Login</h3>
             <p className="flex items-start gap-2 text-xs">
               <img
@@ -57,7 +57,7 @@ export default function MainDefault(props: IMainDefaultProps) {
           <Table userInfo={props.userInfo!} />
         </>
       )}
-      <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+      <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
         <h3 className="text-md text-sm mb-2">Documentation</h3>
         <div className="flex items-start gap-2 text-xs">
           <img
@@ -72,7 +72,7 @@ export default function MainDefault(props: IMainDefaultProps) {
           </p>
         </div>
       </div>
-      <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+      <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
         <h3 className="text-md text-sm mb-2">Privacy Policy</h3>
         <div className="flex items-start gap-2 text-xs">
           <img
