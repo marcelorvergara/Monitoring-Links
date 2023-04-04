@@ -121,7 +121,9 @@ const Home: NextPage = () => {
   function switchComonent() {
     switch (component) {
       case "Home":
-        return <MainDefault userInfo={userInfo} totUrls={totUrls} />;
+        return (
+          <MainDefault userInfo={userInfo} totUrls={totUrls} open={open} />
+        );
       case "Login":
         return <Login />;
       case "Latest Results":
@@ -166,7 +168,9 @@ const Home: NextPage = () => {
         );
 
       default:
-        return <MainDefault userInfo={userInfo} totUrls={totUrls} />;
+        return (
+          <MainDefault userInfo={userInfo} totUrls={totUrls} open={open} />
+        );
     }
   }
   return (

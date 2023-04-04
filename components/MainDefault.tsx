@@ -5,6 +5,7 @@ import Table from "./Table";
 interface IMainDefaultProps {
   userInfo?: ISession;
   totUrls?: number;
+  open: boolean;
 }
 
 export default function MainDefault(props: IMainDefaultProps) {
@@ -16,7 +17,7 @@ export default function MainDefault(props: IMainDefaultProps) {
       </h1>
       {!props.userInfo ? (
         <>
-          <h2 className="text-sm mt-2 mb-2 font-body mx-2">
+          <h2 className="text-sm mt-2 mb-2 font-body mx-2 pl-1">
             Discover how you can monitor your website's performance with just a
             few clicks. Try it now and compare your site's performance with
             others in your industry.
@@ -72,27 +73,50 @@ export default function MainDefault(props: IMainDefaultProps) {
           </p>
         </div>
       </div>
-      <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
-        <h3 className="text-md text-sm mb-2">Privacy Policy</h3>
-        <div className="flex items-start gap-2 text-xs">
-          <img
-            className="bg-gray-400 p-1 rounded h-12 w-12"
-            src="/static/images/policy.svg"
-            alt="how to use Monitoring Links"
-          />
-          <p>
-            Monitoring Links Privacy Policy addresses data collection, usage,
-            and disclosure, with third party logins. It prioritizes security and
-            aggregated data sharing. Users should periodically review. Full
-            policy:{" "}
-            <Link href="/privacypolicy" target="_blank">
-              <span className="text-blue-600 hover:text-blue-800">
-                Privacy Policy
-              </span>
-            </Link>
-          </p>
+      {!props.userInfo && !props.open ? (
+        <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+          <h3 className="text-md text-sm mb-2">Privacy Policy</h3>
+          <div className="flex items-start gap-2 text-xs">
+            <img
+              className="bg-gray-400 p-1 rounded h-12 w-12"
+              src="/static/images/policy.svg"
+              alt="how to use Monitoring Links"
+            />
+            <p>
+              Monitoring Links Privacy Policy addresses data collection, usage,
+              and disclosure, with third party logins. It prioritizes security
+              and aggregated data sharing. Users should periodically review.
+              Full policy:{" "}
+              <Link href="/privacypolicy" target="_blank">
+                <span className="text-blue-600 hover:text-blue-800">
+                  Privacy Policy
+                </span>
+              </Link>
+            </p>
+          </div>
         </div>
-      </div>
+      ) : !props.userInfo && props.open ? (
+        <div className="p-2 ml-2 mr-1 mt-2 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+          <h3 className="text-md text-sm mb-2">Privacy Policy</h3>
+          <div className="flex items-start gap-2 text-xs">
+            <img
+              className="bg-gray-400 p-1 rounded h-12 w-12"
+              src="/static/images/policy.svg"
+              alt="how to use Monitoring Links"
+            />
+            <p>
+              Monitoring Links{" "}
+              <Link href="/privacypolicy" target="_blank">
+                <span className="text-blue-600 hover:text-blue-800">
+                  Privacy Policy
+                </span>
+              </Link>
+            </p>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </main>
   );
 }
