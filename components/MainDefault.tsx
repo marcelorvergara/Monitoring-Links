@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ISession } from "../pages";
 import Table from "./Table";
 
@@ -28,7 +29,9 @@ export default function MainDefault(props: IMainDefaultProps) {
                 src="/static/images/login.svg"
                 alt="how to use Monitoring Links"
               />
-              Click in the face icon in the side menu to login
+              Click in the face icon in the side menu to login. Upon logging in,
+              we store your name, profile picture link and user ID in our
+              database solely for the purpose of this application.
             </p>
           </div>
         </>
@@ -66,6 +69,31 @@ export default function MainDefault(props: IMainDefaultProps) {
             After logging in, access information on how to use{" "}
             <span className="font-semibold">Monitoring Links</span> by clicking
             the question mark icon in the side menu.
+          </p>
+        </div>
+      </div>
+      <div className="p-2 ml-2 mr-1 mt-4 text-left border-2 border-gray-700 rounded transition-colors duration-150 ease-in sm:w-11/12">
+        <h3 className="text-md text-sm mb-2">Privacy Policy</h3>
+        <div className="flex items-start gap-2 text-xs">
+          <img
+            className="bg-gray-400 p-1 rounded h-12 w-12"
+            src="/static/images/policy.svg"
+            alt="how to use Monitoring Links"
+          />
+          <p>
+            Monitoring Links Privacy Policy covers data collection, usage,
+            maintenance, and disclosure for app users. Users agree to
+            information collection as outlined. The policy details Google and
+            Facebook account login, user identification, experience
+            personalization, app improvement, and customer service. Personal
+            information isn't sold, traded, or rented; aggregated data may be
+            shared. Security is prioritized, and policy changes are possible;
+            users should review periodically. Full policy:{" "}
+            <Link href="/privacypolicy" target="_blank">
+              <span className="text-blue-600 hover:text-blue-800">
+                Privacy Policy
+              </span>
+            </Link>
           </p>
         </div>
       </div>
