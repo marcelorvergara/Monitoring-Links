@@ -38,7 +38,7 @@ export default function MainDefault(props: IMainDefaultProps) {
       ) : (
         <>
           <div className="m-2 basis-11/12 p-2 text-center font-body transition-colors duration-150 ease-in">
-            <h3 className="text-md text-sm mb-2">
+            <h3 className="text-md text-sm">
               Hello{" "}
               {`${
                 !!props.userInfo.displayName
