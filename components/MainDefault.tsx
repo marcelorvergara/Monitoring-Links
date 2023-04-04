@@ -81,14 +81,14 @@ export default function MainDefault(props: IMainDefaultProps) {
             alt="how to use Monitoring Links"
           />
           <p>
-            Monitoring Links Privacy Policy covers data collection, usage,
-            maintenance, and disclosure for app users. Users agree to
-            information collection as outlined. The policy details Google and
-            Facebook account login, user identification, experience
-            personalization, app improvement, and customer service. Personal
-            information isn't sold, traded, or rented; aggregated data may be
-            shared. Security is prioritized, and policy changes are possible;
-            users should review periodically. Full policy:{" "}
+            The Monitoring Links Privacy Policy governs data collection, usage,
+            retention, and disclosure for app users. Users consent to
+            information collection as specified. The policy elaborates on Google
+            and Facebook account logins, user identification, personalized
+            experiences, app enhancements, and customer support. Personal
+            information isn't sold, traded, or rented; however, aggregated data
+            might be shared. Security is a top priority, policy updates may
+            occur; users are encouraged to review periodically. Full policy:{" "}
             <Link href="/privacypolicy" target="_blank">
               <span className="text-blue-600 hover:text-blue-800">
                 Privacy Policy
