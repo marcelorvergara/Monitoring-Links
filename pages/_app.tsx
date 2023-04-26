@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Monitoring Links - Best Way to Monitor your Website Link</title>
+        <link rel="canonical" href="https://monitoringlinks.com/" />
         <meta
           name="description"
           content="Discover how you can monitor your website's performance with just a few clicks. Try it now and compare your site's performance with others in your industry."
