@@ -5,6 +5,7 @@
 ### O que esse app faz?
 
 - Esse aplicativo monitora links de internet e gera relatórios de tempo de resposta.
+- Está disponível nesse link [Monitoring Links](https://monitoringlinks.com/).
 
 ### Como foi desenvolvido?
 
