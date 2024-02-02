@@ -72,7 +72,6 @@ export default function LatestResults(props: ILatestResultsProps) {
                   }`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
-                    <p>{item.load_time}</p>
                     <div>
                       <span>{parseDate(item.created_at)}</span>
                       <br />
