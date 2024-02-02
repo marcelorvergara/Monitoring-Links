@@ -52,7 +52,9 @@ export default function Table(props: ITableProps) {
                   <tr
                     key={i}
                     className={`border-2 border-gray-400 ${
-                      item.avg < item.warning_th
+                      parseFloat(item.avg).toFixed(2) === "0.00"
+                        ? "bg-gray-500"
+                        : item.avg < item.warning_th
                         ? "bg-green-100"
                         : item.avg > item.warning_th &&
                           item.avg < item.danger_th
