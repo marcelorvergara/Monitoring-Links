@@ -62,7 +62,9 @@ export default function LatestResults(props: ILatestResultsProps) {
                 <tr
                   key={i}
                   className={`border-2 border-gray-400 ${
-                    item.load_time < item.warning_th
+                    item.load_time === "0"
+                      ? "bg-gray-500"
+                      : item.load_time < item.warning_th
                       ? "bg-green-200"
                       : item.load_time > item.danger_th
                       ? "bg-red-100"
@@ -70,6 +72,7 @@ export default function LatestResults(props: ILatestResultsProps) {
                   }`}>
                   <td>
                     {item.url.replace("https://", "").replace("http://", "")}
+                    <p>{item.load_time}</p>
                     <div>
                       <span>{parseDate(item.created_at)}</span>
                       <br />
